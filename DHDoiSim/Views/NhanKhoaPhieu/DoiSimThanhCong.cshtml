@@ -1,0 +1,156 @@
+﻿@model IEnumerable<DHDoiSim.Models.Sim_Phieu>
+@*@model PagedList.IPagedList<DHDoiSim.Models.Sim_Phieu>
+    @using PagedList.Mvc;*@
+
+@{
+    /**/
+
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Thống kê đổi sim thành công</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*ThaiHN thêm*@
+@using (Html.BeginForm("DoiSimThanhCong", "NhanKhoaPhieu", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-2">
+            Phòng
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("IDPhong", (IEnumerable<SelectListItem>)ViewData["DSPhong"],
+            new { onchange = "OnNhanKhoaPhieuChange(this.value)" })
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Từ ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("TuNgay", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-2">
+            Đến ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("DenNgay", "", new { style = "color:red" })
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Số Điện thoại
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("SoDT", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Tìm</span>
+            </button>
+        </div>
+
+    </div>
+}
+@*Hết thêm*@
+<table class="table">
+    <tr>
+        <th>STT</th>
+
+        <th>
+            Tên Phòng
+            @*@Html.DisplayNameFor(model => model.DMPhong.TenDonVi)*@
+        </th>
+        <th>
+            Tên Tổ
+            @*@Html.DisplayNameFor(model => model.DMTo.TenDonVi)*@
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeKhoaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserKhoaPhieu)
+        </th>
+
+    </tr>
+
+    @{int rowNo = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(rowNo += 1)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+            </td>
+
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.SoDT)
+                </font>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungThucHien)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeKhoaPhieu)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserKhoaPhieu)
+            </td>
+        </tr>
+    }
+
+</table>
+@*ThaiHN thêm*@
+@*<div id='Paging' style="text-align:center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, Ten_QH = ViewBag.Ten_QH, Ten_Phong = ViewBag.Ten_Phong, ID_StatusOB = ViewBag.ID_StatusOB, ID_KetQuaThucHien = ViewBag.ID_KetQuaThucHien, NguoiGoi = ViewBag.NguoiGoi }))
+    </div>*@
+@*Hết thêm*@

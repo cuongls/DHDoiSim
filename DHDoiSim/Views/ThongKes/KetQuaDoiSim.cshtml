@@ -1,0 +1,144 @@
+﻿@model IEnumerable<DHDoiSim.Models.ThongKe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Báo cáo kết quả đổi sim 4G</h2>
+
+@*<p>
+            @Html.ActionLink("Create New", "Create")
+    </p>*@
+@using (Html.BeginForm("KetQuaDoiSim", "ThongKes", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-2">
+            Từ ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("TuNgay", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-2">
+            Đến ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("DenNgay", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Xem</span>
+            </button>
+        </div>
+    </div>
+}
+
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th style="text-align:center">
+            Tên đơn vị
+            @*@Html.DisplayNameFor(model => model.DMPhong.TenDonVi)*@
+        </th>
+        <th style="text-align:center">
+            Đổi sim thành công
+            @*@Html.DisplayNameFor(model => model.DoiSimThanhCong)*@
+        </th>
+        <th style="text-align:center">
+            Số sim trắng đã cấp
+            @*@Html.DisplayNameFor(model => model.SoSimTrangDaCap)*@
+        </th>
+        <th style="text-align:center">
+            Đổi sim không thành công
+            @*@Html.DisplayNameFor(model => model.DoiSimKhongThanhCong)*@
+        </th>
+        <th style="text-align:center">
+            Chưa có kết quả
+            @*@Html.DisplayNameFor(model => model.ChuaCoKetQua)*@
+        </th>
+        <th style="text-align:center">
+            Tổng số phiếu
+            @*@Html.DisplayNameFor(model => model.TongSoPhieu)*@
+        </th>
+        <th style="text-align:center">
+            Tỷ lệ đổi sim thành công
+            @*@Html.DisplayNameFor(model => model.TyLeDoiSimThanhCong)*@
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.NgayBC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayGioTaoBaoCao)
+            </th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center">
+            <td>
+                @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiSimThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoSimTrangDaCap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiSimKhongThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuaCoKetQua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongSoPhieu)
+            </td>
+            <td style="background-color:paleturquoise">
+                @Html.DisplayFor(modelItem => item.TyLeDoiSimThanhCong)%
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.NgayBC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGioTaoBaoCao)
+                </td>*@
+        </tr>
+    }
+    <tr style="background-color:lightsteelblue;text-align:center">
+        <td>
+            Tổng cộng
+        </td>
+        <td>
+            @ViewBag.DoiSimThanhCong
+            @*@Html.DisplayFor(modelItem => item.DoiSimThanhCong)*@
+        </td>
+        <td>
+            @ViewBag.SoSimTrangDaCap
+            @*@Html.DisplayFor(modelItem => item.SoSimTrangDaCap)*@
+        </td>
+        <td>
+            @ViewBag.DoiSimKhongThanhCong
+            @*@Html.DisplayFor(modelItem => item.DoiSimKhongThanhCong)*@
+        </td>
+        <td>
+            @ViewBag.ChuaCoKetQua
+            @*@Html.DisplayFor(modelItem => item.ChuaCoKetQua)*@
+        </td>
+        <td>
+            @ViewBag.TongSoPhieu
+            @*@Html.DisplayFor(modelItem => item.TongSoPhieu)*@
+        </td>
+        <td>
+            @ViewBag.TyLeDoiSimThangCong%
+            @*@Html.DisplayFor(modelItem => item.TyLeDoiSimThanhCong)*@
+        </td>
+    </tr>
+</table>
+
+
+
+
+

@@ -1,0 +1,923 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoiSimModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DMDiaBan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="DMDonViKT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenTat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMPhongs" Relationship="Self.FK_DMPhong_DMDonViKT" FromRole="DMDonViKT" ToRole="DMPhong" />
+    <NavigationProperty Name="Sim_Trang" Relationship="DoiSimModel.FK_Sim_Trang_DMDonViKT" FromRole="DMDonViKT" ToRole="Sim_Trang" />
+    <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_KH_DMDonViKT" FromRole="DMDonViKT" ToRole="Sim_KH" />
+  </EntityType>
+  <EntityType Name="DMKetQuaThucHien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_KH_DMKetQuaThucHien" FromRole="DMKetQuaThucHien" ToRole="Sim_KH" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMKetQuaThucHien" FromRole="DMKetQuaThucHien" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="DMMucUuTien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMMucUuTien" FromRole="DMMucUuTien" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="DMPhong">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DonViKT" Type="Int32" />
+    <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenTat" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMDonViKT" Relationship="Self.FK_DMPhong_DMDonViKT" FromRole="DMPhong" ToRole="DMDonViKT" />
+    <NavigationProperty Name="DMToes" Relationship="Self.FK_DMTo_DMPhong" FromRole="DMPhong" ToRole="DMTo" />
+    <NavigationProperty Name="Sim_Trang" Relationship="DoiSimModel.FK_Sim_Trang_DMPhong" FromRole="DMPhong" ToRole="Sim_Trang" />
+    <NavigationProperty Name="ThongKes" Relationship="DoiSimModel.FK_ThongKe_DMPhong" FromRole="DMPhong" ToRole="ThongKe" />
+    <NavigationProperty Name="UserLists" Relationship="DoiSimModel.FK_UserList_DMPhong" FromRole="DMPhong" ToRole="UserList" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMPhong" FromRole="DMPhong" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="DMStatusOBKH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_KH_DMStatusOBKH" FromRole="DMStatusOBKH" ToRole="Sim_KH" />
+    <NavigationProperty Name="Sim_KH_NhatKyUpdate" Relationship="DoiSimModel.FK_Sim_KH_NhatKyUpdate_DMStatusOBKH" FromRole="DMStatusOBKH" ToRole="Sim_KH_NhatKyUpdate" />
+  </EntityType>
+  <EntityType Name="DMStatusSimTrang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DMStatusSuDung">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StatusName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sim_Trang" Relationship="DoiSimModel.FK_Sim_Trang_DMStatusSuDung" FromRole="DMStatusSuDung" ToRole="Sim_Trang" />
+  </EntityType>
+  <EntityType Name="DMTo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMPhong" Relationship="Self.FK_DMTo_DMPhong" FromRole="DMTo" ToRole="DMPhong" />
+    <NavigationProperty Name="Sim_Trang" Relationship="DoiSimModel.FK_Sim_Trang_DMTo" FromRole="DMTo" ToRole="Sim_Trang" />
+    <NavigationProperty Name="UserLists" Relationship="DoiSimModel.FK_UserList_DMTo" FromRole="DMTo" ToRole="UserList" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMTo" FromRole="DMTo" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="ID_Permission" />
+    </Key>
+    <Property Name="ID_Permission" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Permission_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Timestamps" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserLists" Relationship="DoiSimModel.FK_UserList_Permission" FromRole="Permission" ToRole="UserList" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TestTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="A" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="B" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="C" Type="Int32" />
+    <Property Name="D" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_DMPhong_DMDonViKT">
+    <End Role="DMDonViKT" Type="Self.DMDonViKT" Multiplicity="0..1" />
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DMPhong">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DMTo_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="DMTo" Type="Self.DMTo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DMTo">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DHDoiSimEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DMDiaBans" EntityType="Self.DMDiaBan" />
+    <EntitySet Name="DMDonViKTs" EntityType="Self.DMDonViKT" />
+    <EntitySet Name="DMKetQuaThucHiens" EntityType="Self.DMKetQuaThucHien" />
+    <EntitySet Name="DMMucUuTiens" EntityType="Self.DMMucUuTien" />
+    <EntitySet Name="DMPhongs" EntityType="Self.DMPhong" />
+    <EntitySet Name="DMStatusOBKHs" EntityType="Self.DMStatusOBKH" />
+    <EntitySet Name="DMStatusSimTrangs" EntityType="Self.DMStatusSimTrang" />
+    <EntitySet Name="DMStatusSuDungs" EntityType="Self.DMStatusSuDung" />
+    <EntitySet Name="DMToes" EntityType="Self.DMTo" />
+    <EntitySet Name="Permissions" EntityType="Self.Permission" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TestTables" EntityType="Self.TestTable" />
+    <AssociationSet Name="FK_DMPhong_DMDonViKT" Association="Self.FK_DMPhong_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKTs" />
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DMTo_DMPhong" Association="Self.FK_DMTo_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+      <End Role="DMTo" EntitySet="DMToes" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CreateTable_Sim_KH" />
+    <FunctionImport Name="SP_CreateTable_Sim_Phieu" />
+    <FunctionImport Name="SP_CreateTable_Sim_Trang" />
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DoiSimModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DoiSimModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Insert_Sim_KH" />
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Sim_Trang" EntityType="DoiSimModel.Sim_Trang" />
+    <AssociationSet Name="FK_Sim_Trang_DMDonViKT" Association="DoiSimModel.FK_Sim_Trang_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKTs" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMPhong" Association="DoiSimModel.FK_Sim_Trang_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMStatusSuDung" Association="DoiSimModel.FK_Sim_Trang_DMStatusSuDung">
+      <End Role="DMStatusSuDung" EntitySet="DMStatusSuDungs" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMTo" Association="DoiSimModel.FK_Sim_Trang_DMTo">
+      <End Role="DMTo" EntitySet="DMToes" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <EntitySet Name="DMQHPXes" EntityType="DoiSimModel.DMQHPX" />
+    <FunctionImport Name="SP_QHPX" />
+    <EntitySet Name="Sim_KH" EntityType="DoiSimModel.Sim_KH" />
+    <AssociationSet Name="FK_Sim_KH_DMDonViKT" Association="DoiSimModel.FK_Sim_KH_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKTs" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_DMKetQuaThucHien" Association="DoiSimModel.FK_Sim_KH_DMKetQuaThucHien">
+      <End Role="DMKetQuaThucHien" EntitySet="DMKetQuaThucHiens" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_DMStatusOBKH" Association="DoiSimModel.FK_Sim_KH_DMStatusOBKH">
+      <End Role="DMStatusOBKH" EntitySet="DMStatusOBKHs" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <EntitySet Name="ThongKes" EntityType="DoiSimModel.ThongKe" />
+    <AssociationSet Name="FK_ThongKe_DMPhong" Association="DoiSimModel.FK_ThongKe_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+      <End Role="ThongKe" EntitySet="ThongKes" />
+    </AssociationSet>
+    <EntitySet Name="ThongBaos" EntityType="DoiSimModel.ThongBao" />
+    <EntitySet Name="UserLists" EntityType="DoiSimModel.UserList" />
+    <AssociationSet Name="FK_UserList_DMPhong" Association="DoiSimModel.FK_UserList_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+      <End Role="UserList" EntitySet="UserLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserList_DMTo" Association="DoiSimModel.FK_UserList_DMTo">
+      <End Role="DMTo" EntitySet="DMToes" />
+      <End Role="UserList" EntitySet="UserLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserList_Permission" Association="DoiSimModel.FK_UserList_Permission">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="UserList" EntitySet="UserLists" />
+    </AssociationSet>
+    <EntitySet Name="DMLoaiGiayToes" EntityType="DoiSimModel.DMLoaiGiayTo" />
+    <EntitySet Name="DMLyDoTons" EntityType="DoiSimModel.DMLyDoTon" />
+    <FunctionImport Name="SP_Convert_Sim_KH" />
+    <FunctionImport Name="SP_Convert_Sim_Phieu_DaGiao_XLS_Da_Run" />
+    <FunctionImport Name="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_KH_Da_Run" />
+    <FunctionImport Name="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_Phieu" />
+    <FunctionImport Name="SP_Create_User" />
+    <EntitySet Name="DMNguongTons" EntityType="DoiSimModel.DMNguongTon" />
+    <FunctionImport Name="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_Phieu_Da_Run" />
+    <EntitySet Name="Sim_Phieu" EntityType="DoiSimModel.Sim_Phieu" />
+    <AssociationSet Name="FK_Sim_Phieu_DMKetQuaThucHien" Association="DoiSimModel.FK_Sim_Phieu_DMKetQuaThucHien">
+      <End Role="DMKetQuaThucHien" EntitySet="DMKetQuaThucHiens" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMLoaiGiayTo" Association="DoiSimModel.FK_Sim_Phieu_DMLoaiGiayTo">
+      <End Role="DMLoaiGiayTo" EntitySet="DMLoaiGiayToes" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMLyDoTo" Association="DoiSimModel.FK_Sim_Phieu_DMLyDoTo">
+      <End Role="DMLyDoTon" EntitySet="DMLyDoTons" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMMucUuTien" Association="DoiSimModel.FK_Sim_Phieu_DMMucUuTien">
+      <End Role="DMMucUuTien" EntitySet="DMMucUuTiens" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMPhong" Association="DoiSimModel.FK_Sim_Phieu_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhongs" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMTo" Association="DoiSimModel.FK_Sim_Phieu_DMTo">
+      <End Role="DMTo" EntitySet="DMToes" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_Sim_KH" Association="DoiSimModel.FK_Sim_Phieu_Sim_KH">
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <EntitySet Name="DoiSim_DM_ImageUnit" EntityType="DoiSimModel.DoiSim_DM_ImageUnit" />
+    <EntitySet Name="Sim_Phieu_NhatKyUpdate" EntityType="DoiSimModel.Sim_Phieu_NhatKyUpdate" />
+    <EntitySet Name="ThongKeDoiSimThanhCongs" EntityType="DoiSimModel.ThongKeDoiSimThanhCong" />
+    <AssociationSet Name="FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" Association="DoiSimModel.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu">
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+      <End Role="Sim_Phieu_NhatKyUpdate" EntitySet="Sim_Phieu_NhatKyUpdate" />
+    </AssociationSet>
+    <EntitySet Name="Sim_KH_NhatKyUpdate" EntityType="DoiSimModel.Sim_KH_NhatKyUpdate" />
+    <FunctionImport Name="SP_KiemTraSoLieu" />
+    <FunctionImport Name="SP_ThongKeNSCL">
+      <Parameter Name="Thang" Mode="In" Type="Int32" />
+      <Parameter Name="Nam" Mode="In" Type="Int32" />
+      <Parameter Name="MaDonVi" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="DMDonViThongKeNSCLs" EntityType="DoiSimModel.DMDonViThongKeNSCL" />
+    <EntitySet Name="DMKyThongKeNSCLs" EntityType="DoiSimModel.DMKyThongKeNSCL" />
+    <EntitySet Name="ThongKeNSCLs" EntityType="DoiSimModel.ThongKeNSCL" />
+    <AssociationSet Name="FK_Sim_KH_NhatKyUpdate_DMStatusOBKH" Association="DoiSimModel.FK_Sim_KH_NhatKyUpdate_DMStatusOBKH">
+      <End Role="DMStatusOBKH" EntitySet="DMStatusOBKHs" />
+      <End Role="Sim_KH_NhatKyUpdate" EntitySet="Sim_KH_NhatKyUpdate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_NhatKyUpdate_Sim_KH" Association="DoiSimModel.FK_Sim_KH_NhatKyUpdate_Sim_KH">
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+      <End Role="Sim_KH_NhatKyUpdate" EntitySet="Sim_KH_NhatKyUpdate" />
+    </AssociationSet>
+    <FunctionImport Name="SP_KhoiTao_Sim_KH_NhatKyUpdate" />
+    <FunctionImport Name="SP_ThongKeOutBound">
+      <Parameter Name="MaDonVi" Mode="In" Type="String" />
+      <Parameter Name="TuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ThongKeKetQuaDoiSim">
+      <Parameter Name="TuNgay" Mode="In" Type="DateTime" />
+      <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="ThongKeOutBounds" EntityType="DoiSimModel.ThongKeOutBound" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Sim_Trang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="STT" Type="Int32" />
+    <Property Name="LoaiHang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MenhGia" Type="Double" />
+    <Property Name="ThucCap" Type="Int32" />
+    <Property Name="ThanhTien" Type="Double" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BaoHanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayBanGiao" Type="DateTime" Precision="0" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="ID_To" Type="Int32" />
+    <Property Name="TimeUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UserUpdate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Timestamps" Type="DateTime" Precision="3" />
+    <Property Name="ID_StatusSuDung" Type="Int32" />
+    <Property Name="ID_DonViKT" Type="Int32" />
+    <NavigationProperty Name="DMDonViKT" Relationship="DoiSimModel.FK_Sim_Trang_DMDonViKT" FromRole="Sim_Trang" ToRole="DMDonViKT" />
+    <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_Sim_Trang_DMPhong" FromRole="Sim_Trang" ToRole="DMPhong" />
+    <NavigationProperty Name="DMStatusSuDung" Relationship="DoiSimModel.FK_Sim_Trang_DMStatusSuDung" FromRole="Sim_Trang" ToRole="DMStatusSuDung" />
+    <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_Sim_Trang_DMTo" FromRole="Sim_Trang" ToRole="DMTo" />
+  </EntityType>
+  <Association Name="FK_Sim_Trang_DMDonViKT">
+    <End Type="DoiSimModel.DMDonViKT" Role="DMDonViKT" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Trang" Role="Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMPhong">
+    <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Trang" Role="Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMStatusSuDung">
+    <End Type="DoiSimModel.DMStatusSuDung" Role="DMStatusSuDung" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Trang" Role="Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusSuDung">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_StatusSuDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMTo">
+    <End Type="DoiSimModel.DMTo" Role="DMTo" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Trang" Role="Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DMQHPX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ten_QH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_PX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Sim_KH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Loai_TB" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BTS_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Dia_Chi_BTS" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Don_Vi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TTVT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Dia_Chi_BTS2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Phuong_Xa_ID" Type="Int32" />
+    <Property Name="Quan_Huyen_ID" Type="Int32" />
+    <Property Name="Ve_Tinh_ID" Type="Int32" />
+    <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_TT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_QH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_PX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Doi_ID" Type="Int32" />
+    <Property Name="Ten_Doi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TT_ID" Type="Int32" />
+    <Property Name="TimeUpFile" Type="DateTime" Precision="3" />
+    <Property Name="UserUpFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Timestamps" Type="DateTime" Precision="3" />
+    <Property Name="ID_DonViKT" Type="Int32" />
+    <Property Name="ID_StatusOBKH" Type="Int32" />
+    <Property Name="NguoiGoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GioGoi" Type="DateTime" Precision="3" />
+    <Property Name="GioHen" Type="DateTime" Precision="3" />
+    <Property Name="DiaChiHenDoiSim" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ID_KetQuaThucHien" Type="Int32" />
+    <Property Name="LyDoPhanDiaBan" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TieuChi" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu3" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="QHHenDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PXHenDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMDonViKT" Relationship="DoiSimModel.FK_Sim_KH_DMDonViKT" FromRole="Sim_KH" ToRole="DMDonViKT" />
+    <NavigationProperty Name="DMKetQuaThucHien" Relationship="DoiSimModel.FK_Sim_KH_DMKetQuaThucHien" FromRole="Sim_KH" ToRole="DMKetQuaThucHien" />
+    <NavigationProperty Name="DMStatusOBKH" Relationship="DoiSimModel.FK_Sim_KH_DMStatusOBKH" FromRole="Sim_KH" ToRole="DMStatusOBKH" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_Sim_KH" FromRole="Sim_KH" ToRole="Sim_Phieu" />
+    <NavigationProperty Name="Sim_KH_NhatKyUpdate" Relationship="DoiSimModel.FK_Sim_KH_NhatKyUpdate_Sim_KH" FromRole="Sim_KH" ToRole="Sim_KH_NhatKyUpdate" />
+  </EntityType>
+  <Association Name="FK_Sim_KH_DMDonViKT">
+    <End Type="DoiSimModel.DMDonViKT" Role="DMDonViKT" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_KH" Role="Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_DMKetQuaThucHien">
+    <End Type="DoiSimModel.DMKetQuaThucHien" Role="DMKetQuaThucHien" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_KH" Role="Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMKetQuaThucHien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_KetQuaThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_DMStatusOBKH">
+    <End Type="DoiSimModel.DMStatusOBKH" Role="DMStatusOBKH" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_KH" Role="Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusOBKH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_StatusOBKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ThongKe">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="DoiSimThanhCong" Type="Int32" />
+    <Property Name="SoSimTrangDaCap" Type="Int32" />
+    <Property Name="DoiSimKhongThanhCong" Type="Int32" />
+    <Property Name="ChuaCoKetQua" Type="Int32" />
+    <Property Name="TongSoPhieu" Type="Int32" />
+    <Property Name="TyLeDoiSimThanhCong" Type="Double" />
+    <Property Name="NgayBC" Type="DateTime" Precision="0" />
+    <Property Name="NgayGioTaoBaoCao" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_ThongKe_DMPhong" FromRole="ThongKe" ToRole="DMPhong" />
+  </EntityType>
+  <Association Name="FK_ThongKe_DMPhong">
+    <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
+    <End Type="DoiSimModel.ThongKe" Role="ThongKe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThongKe">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ThongBao">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NgayNhap" Type="DateTime" Precision="3" />
+    <Property Name="NguoiNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HoatDong" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="UserList">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Birthday" Type="DateTime" Precision="0" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Permission" Type="Int32" />
+    <Property Name="Last_Login" Type="DateTime" Precision="3" />
+    <Property Name="Last_Seen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Last_Seen_URL" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="ID_To" Type="Int32" />
+    <Property Name="Timestamps" Type="DateTime" Precision="3" />
+    <Property Name="HoatDong" Type="Boolean" />
+    <Property Name="UserCreate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_UserList_DMPhong" FromRole="UserList" ToRole="DMPhong" />
+    <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_UserList_DMTo" FromRole="UserList" ToRole="DMTo" />
+    <NavigationProperty Name="Permission" Relationship="DoiSimModel.FK_UserList_Permission" FromRole="UserList" ToRole="Permission" />
+  </EntityType>
+  <Association Name="FK_UserList_DMPhong">
+    <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
+    <End Type="DoiSimModel.UserList" Role="UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserList_DMTo">
+    <End Type="DoiSimModel.DMTo" Role="DMTo" Multiplicity="0..1" />
+    <End Type="DoiSimModel.UserList" Role="UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserList_Permission">
+    <End Type="DoiSimModel.Permission" Role="Permission" Multiplicity="0..1" />
+    <End Type="DoiSimModel.UserList" Role="UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="ID_Permission" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_Permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DMLoaiGiayTo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoaiGiayTo" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="HoatDong" Type="Boolean" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMLoaiGiayTo" FromRole="DMLoaiGiayTo" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="DMLyDoTon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LyDoTon" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="HoatDong" Type="Boolean" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMLyDoTo" FromRole="DMLyDoTon" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="DMNguongTon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NguongTon" Type="Double" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Sim_Phieu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Sim_KH" Type="Int32" />
+    <Property Name="ID_Sim_Trang" Type="Int32" />
+    <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiTB" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModelDienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_QH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Ten_PX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiHenDoiSim" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GioHen" Type="DateTime" Precision="3" />
+    <Property Name="ID_MucUuTien" Type="Int32" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="ID_To" Type="Int32" />
+    <Property Name="TimeXP" Type="DateTime" Precision="3" />
+    <Property Name="UserXP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungXP" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TimeChiaPhieu" Type="DateTime" Precision="3" />
+    <Property Name="UserChiaPhieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungChiaPhieu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TimeNhanPhieu" Type="DateTime" Precision="3" />
+    <Property Name="UserNhanPhieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungNhanPhieu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TimeCapNhatKetQuaThucHien" Type="DateTime" Precision="3" />
+    <Property Name="UserThucHien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateThucHien" Type="DateTime" Precision="0" />
+    <Property Name="NoiDungThucHien" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ID_KetQuaThucHien" Type="Int32" />
+    <Property Name="Image_CMT_Truoc" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Image_CMT_Sau" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Image_BienBan" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ID_DonViKT" Type="Int32" />
+    <Property Name="PhanMemKhoaPhieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TimeChiaPhieu2" Type="DateTime" Precision="3" />
+    <Property Name="UserChiaPhieu2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungChiaPhieu2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TimeKhoaPhieu" Type="DateTime" Precision="3" />
+    <Property Name="UserKhoaPhieu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungKhoaPhieu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Image_CamKetKhongCC" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LyDoTon" Type="Int32" />
+    <Property Name="TimeNhapTon" Type="DateTime" Precision="3" />
+    <Property Name="UserNhapTon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungNhapTon" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ID_LoaiGiayTo" Type="Int32" />
+    <Property Name="GhiChu11" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="NgayHenMoi" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DMKetQuaThucHien" Relationship="DoiSimModel.FK_Sim_Phieu_DMKetQuaThucHien" FromRole="Sim_Phieu" ToRole="DMKetQuaThucHien" />
+    <NavigationProperty Name="DMLoaiGiayTo" Relationship="DoiSimModel.FK_Sim_Phieu_DMLoaiGiayTo" FromRole="Sim_Phieu" ToRole="DMLoaiGiayTo" />
+    <NavigationProperty Name="DMLyDoTon" Relationship="DoiSimModel.FK_Sim_Phieu_DMLyDoTo" FromRole="Sim_Phieu" ToRole="DMLyDoTon" />
+    <NavigationProperty Name="DMMucUuTien" Relationship="DoiSimModel.FK_Sim_Phieu_DMMucUuTien" FromRole="Sim_Phieu" ToRole="DMMucUuTien" />
+    <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_Sim_Phieu_DMPhong" FromRole="Sim_Phieu" ToRole="DMPhong" />
+    <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_Sim_Phieu_DMTo" FromRole="Sim_Phieu" ToRole="DMTo" />
+    <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_Phieu_Sim_KH" FromRole="Sim_Phieu" ToRole="Sim_KH" />
+    <NavigationProperty Name="Sim_Phieu_NhatKyUpdate" Relationship="DoiSimModel.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" FromRole="Sim_Phieu" ToRole="Sim_Phieu_NhatKyUpdate" />
+    <Property Name="CCCD_KhachHang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Sim_Phieu_DMKetQuaThucHien">
+    <End Type="DoiSimModel.DMKetQuaThucHien" Role="DMKetQuaThucHien" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMKetQuaThucHien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_KetQuaThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMLoaiGiayTo">
+    <End Type="DoiSimModel.DMLoaiGiayTo" Role="DMLoaiGiayTo" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMLoaiGiayTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_LoaiGiayTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMLyDoTo">
+    <End Type="DoiSimModel.DMLyDoTon" Role="DMLyDoTon" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMLyDoTon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_LyDoTon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMMucUuTien">
+    <End Type="DoiSimModel.DMMucUuTien" Role="DMMucUuTien" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMMucUuTien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_MucUuTien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMPhong">
+    <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMTo">
+    <End Type="DoiSimModel.DMTo" Role="DMTo" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_Sim_KH">
+    <End Type="DoiSimModel.Sim_KH" Role="Sim_KH" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_KH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_Sim_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DoiSim_DM_ImageUnit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaUnit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoaiImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TenLoaiImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HuongDan" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Show" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Sim_Phieu_NhatKyUpdate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Sim_Phieu" Type="Int32" />
+    <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TimeUpdate" Type="DateTime" Precision="3" />
+    <Property Name="UserUpdate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDungUpDate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" FromRole="Sim_Phieu_NhatKyUpdate" ToRole="Sim_Phieu" />
+  </EntityType>
+  <EntityType Name="ThongKeDoiSimThanhCong">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Phong" Type="Int32" />
+    <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HoTenUserDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayDoiSim" Type="DateTime" Precision="0" />
+    <Property Name="NgayDoiSim_VN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu">
+    <End Type="DoiSimModel.Sim_Phieu" Role="Sim_Phieu" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_Phieu_NhatKyUpdate" Role="Sim_Phieu_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_Phieu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu_NhatKyUpdate">
+        <PropertyRef Name="ID_Sim_Phieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sim_KH_NhatKyUpdate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Sim_KH" Type="Int32" />
+    <Property Name="SoDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ID_StatusOBKH" Type="Int32" />
+    <Property Name="NguoiGoi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GioGoi" Type="DateTime" Precision="3" />
+    <Property Name="GioHen" Type="DateTime" Precision="3" />
+    <Property Name="QHHenDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PXHenDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChiHenDoiSim" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMStatusOBKH" Relationship="DoiSimModel.FK_Sim_KH_NhatKyUpdate_DMStatusOBKH" FromRole="Sim_KH_NhatKyUpdate" ToRole="DMStatusOBKH" />
+    <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_KH_NhatKyUpdate_Sim_KH" FromRole="Sim_KH_NhatKyUpdate" ToRole="Sim_KH" />
+  </EntityType>
+  <EntityType Name="DMDonViThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DMKyThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Thang" Type="Int32" />
+    <Property Name="Nam" Type="Int32" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Thang" Type="Int32" />
+    <Property Name="Nam" Type="Int32" />
+    <Property Name="ID_Ky" Type="Int32" />
+    <Property Name="MaDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChucDanh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GoiHenDoiSim4G_ThanhCong" Type="Int32" />
+    <Property Name="GoiHenDoiSim4G_KHDaDoiTaiQuay" Type="Int32" />
+    <Property Name="ThucHienDoiSim4G_ThanhCong" Type="Int32" />
+    <Property Name="GoiHenDoiSim4G_XuatPhieuDoiSim" Type="Int32" />
+    <Property Name="TongDiem" Type="Double" />
+  </EntityType>
+  <Association Name="FK_Sim_KH_NhatKyUpdate_DMStatusOBKH">
+    <End Type="DoiSimModel.DMStatusOBKH" Role="DMStatusOBKH" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_KH_NhatKyUpdate" Role="Sim_KH_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusOBKH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH_NhatKyUpdate">
+        <PropertyRef Name="ID_StatusOBKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_NhatKyUpdate_Sim_KH">
+    <End Type="DoiSimModel.Sim_KH" Role="Sim_KH" Multiplicity="0..1" />
+    <End Type="DoiSimModel.Sim_KH_NhatKyUpdate" Role="Sim_KH_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_KH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH_NhatKyUpdate">
+        <PropertyRef Name="ID_Sim_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ThongKeOutBound">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenDonVi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TuNgay" Type="DateTime" Precision="0" />
+    <Property Name="DenNgay" Type="DateTime" Precision="0" />
+    <Property Name="PhieuDaXuat" Type="Int32" />
+  </EntityType>
+</Schema>

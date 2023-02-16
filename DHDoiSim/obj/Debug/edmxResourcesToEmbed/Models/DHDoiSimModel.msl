@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DoiSimModelStoreContainer" CdmEntityContainer="DHDoiSimEntities">
+    <EntitySetMapping Name="DMDiaBans">
+      <EntityTypeMapping TypeName="DoiSimModel.DMDiaBan">
+        <MappingFragment StoreEntitySet="DMDiaBan">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMDonViKTs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMDonViKT">
+        <MappingFragment StoreEntitySet="DMDonViKT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+          <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMKetQuaThucHiens">
+      <EntityTypeMapping TypeName="DoiSimModel.DMKetQuaThucHien">
+        <MappingFragment StoreEntitySet="DMKetQuaThucHien">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMMucUuTiens">
+      <EntityTypeMapping TypeName="DoiSimModel.DMMucUuTien">
+        <MappingFragment StoreEntitySet="DMMucUuTien">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMPhongs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMPhong">
+        <MappingFragment StoreEntitySet="DMPhong">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_DonViKT" ColumnName="ID_DonViKT" />
+          <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+          <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMStatusOBKHs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMStatusOBKH">
+        <MappingFragment StoreEntitySet="DMStatusOBKH">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMStatusSimTrangs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMStatusSimTrang">
+        <MappingFragment StoreEntitySet="DMStatusSimTrang">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMStatusSuDungs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMStatusSuDung">
+        <MappingFragment StoreEntitySet="DMStatusSuDung">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMToes">
+      <EntityTypeMapping TypeName="DoiSimModel.DMTo">
+        <MappingFragment StoreEntitySet="DMTo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+          <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="DoiSimModel.Permission">
+        <MappingFragment StoreEntitySet="Permission">
+          <ScalarProperty Name="ID_Permission" ColumnName="ID_Permission" />
+          <ScalarProperty Name="Permission_Name" ColumnName="Permission_Name" />
+          <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DoiSimModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestTables">
+      <EntityTypeMapping TypeName="DoiSimModel.TestTable">
+        <MappingFragment StoreEntitySet="TestTable">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="A" ColumnName="A" />
+          <ScalarProperty Name="B" ColumnName="B" />
+          <ScalarProperty Name="C" ColumnName="C" />
+          <ScalarProperty Name="D" ColumnName="D" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DoiSimModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DoiSimModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="SP_CreateTable_Sim_KH" FunctionName="DoiSimModel.Store.SP_CreateTable_Sim_KH" />
+    <FunctionImportMapping FunctionImportName="SP_CreateTable_Sim_Phieu" FunctionName="DoiSimModel.Store.SP_CreateTable_Sim_Phieu" />
+    <FunctionImportMapping FunctionImportName="SP_CreateTable_Sim_Trang" FunctionName="DoiSimModel.Store.SP_CreateTable_Sim_Trang" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DoiSimModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DoiSimModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoiSimModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="DoiSimModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DoiSimModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Insert_Sim_KH" FunctionName="DoiSimModel.Store.SP_Insert_Sim_KH" />
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DoiSimModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DoiSimModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="Sim_Trang">
+      <EntityTypeMapping TypeName="DoiSimModel.Sim_Trang">
+        <MappingFragment StoreEntitySet="Sim_Trang">
+          <ScalarProperty Name="ID_DonViKT" ColumnName="ID_DonViKT" />
+          <ScalarProperty Name="ID_StatusSuDung" ColumnName="ID_StatusSuDung" />
+          <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+          <ScalarProperty Name="UserUpdate" ColumnName="UserUpdate" />
+          <ScalarProperty Name="TimeUpdate" ColumnName="TimeUpdate" />
+          <ScalarProperty Name="ID_To" ColumnName="ID_To" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="NgayBanGiao" ColumnName="NgayBanGiao" />
+          <ScalarProperty Name="BaoHanh" ColumnName="BaoHanh" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="ThucCap" ColumnName="ThucCap" />
+          <ScalarProperty Name="MenhGia" ColumnName="MenhGia" />
+          <ScalarProperty Name="LoaiHang" ColumnName="LoaiHang" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMQHPXes">
+      <EntityTypeMapping TypeName="DoiSimModel.DMQHPX">
+        <MappingFragment StoreEntitySet="DMQHPX">
+          <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="Ten_PX" ColumnName="Ten_PX" />
+          <ScalarProperty Name="Ten_QH" ColumnName="Ten_QH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_QHPX" FunctionName="DoiSimModel.Store.SP_QHPX" />
+    <EntitySetMapping Name="Sim_KH">
+      <EntityTypeMapping TypeName="DoiSimModel.Sim_KH">
+        <MappingFragment StoreEntitySet="Sim_KH">
+          <ScalarProperty Name="PXHenDoiSim" ColumnName="PXHenDoiSim" />
+          <ScalarProperty Name="QHHenDoiSim" ColumnName="QHHenDoiSim" />
+          <ScalarProperty Name="GhiChu3" ColumnName="GhiChu3" />
+          <ScalarProperty Name="GhiChu2" ColumnName="GhiChu2" />
+          <ScalarProperty Name="GhiChu1" ColumnName="GhiChu1" />
+          <ScalarProperty Name="TieuChi" ColumnName="TieuChi" />
+          <ScalarProperty Name="LyDoPhanDiaBan" ColumnName="LyDoPhanDiaBan" />
+          <ScalarProperty Name="ID_KetQuaThucHien" ColumnName="ID_KetQuaThucHien" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="DiaChiHenDoiSim" ColumnName="DiaChiHenDoiSim" />
+          <ScalarProperty Name="GioHen" ColumnName="GioHen" />
+          <ScalarProperty Name="GioGoi" ColumnName="GioGoi" />
+          <ScalarProperty Name="NguoiGoi" ColumnName="NguoiGoi" />
+          <ScalarProperty Name="ID_StatusOBKH" ColumnName="ID_StatusOBKH" />
+          <ScalarProperty Name="ID_DonViKT" ColumnName="ID_DonViKT" />
+          <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+          <ScalarProperty Name="UserUpFile" ColumnName="UserUpFile" />
+          <ScalarProperty Name="TimeUpFile" ColumnName="TimeUpFile" />
+          <ScalarProperty Name="TT_ID" ColumnName="TT_ID" />
+          <ScalarProperty Name="Ten_Doi" ColumnName="Ten_Doi" />
+          <ScalarProperty Name="Doi_ID" ColumnName="Doi_ID" />
+          <ScalarProperty Name="Ten_PX" ColumnName="Ten_PX" />
+          <ScalarProperty Name="Ten_QH" ColumnName="Ten_QH" />
+          <ScalarProperty Name="Ten_TT" ColumnName="Ten_TT" />
+          <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+          <ScalarProperty Name="Ve_Tinh_ID" ColumnName="Ve_Tinh_ID" />
+          <ScalarProperty Name="Quan_Huyen_ID" ColumnName="Quan_Huyen_ID" />
+          <ScalarProperty Name="Phuong_Xa_ID" ColumnName="Phuong_Xa_ID" />
+          <ScalarProperty Name="Dia_Chi_BTS2" ColumnName="Dia_Chi_BTS2" />
+          <ScalarProperty Name="TTVT" ColumnName="TTVT" />
+          <ScalarProperty Name="Don_Vi" ColumnName="Don_Vi" />
+          <ScalarProperty Name="Dia_Chi_BTS" ColumnName="Dia_Chi_BTS" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="BTS_Name" ColumnName="BTS_Name" />
+          <ScalarProperty Name="Loai_TB" ColumnName="Loai_TB" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongKes">
+      <EntityTypeMapping TypeName="DoiSimModel.ThongKe">
+        <MappingFragment StoreEntitySet="ThongKe">
+          <ScalarProperty Name="NgayGioTaoBaoCao" ColumnName="NgayGioTaoBaoCao" />
+          <ScalarProperty Name="NgayBC" ColumnName="NgayBC" />
+          <ScalarProperty Name="TyLeDoiSimThanhCong" ColumnName="TyLeDoiSimThanhCong" />
+          <ScalarProperty Name="TongSoPhieu" ColumnName="TongSoPhieu" />
+          <ScalarProperty Name="ChuaCoKetQua" ColumnName="ChuaCoKetQua" />
+          <ScalarProperty Name="DoiSimKhongThanhCong" ColumnName="DoiSimKhongThanhCong" />
+          <ScalarProperty Name="SoSimTrangDaCap" ColumnName="SoSimTrangDaCap" />
+          <ScalarProperty Name="DoiSimThanhCong" ColumnName="DoiSimThanhCong" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongBaos">
+      <EntityTypeMapping TypeName="DoiSimModel.ThongBao">
+        <MappingFragment StoreEntitySet="ThongBao">
+          <ScalarProperty Name="HoatDong" ColumnName="HoatDong" />
+          <ScalarProperty Name="NguoiNhap" ColumnName="NguoiNhap" />
+          <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLists">
+      <EntityTypeMapping TypeName="DoiSimModel.UserList">
+        <MappingFragment StoreEntitySet="UserList">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+          <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+          <ScalarProperty Name="HoatDong" ColumnName="HoatDong" />
+          <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
+          <ScalarProperty Name="ID_To" ColumnName="ID_To" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="Last_Seen_URL" ColumnName="Last_Seen_URL" />
+          <ScalarProperty Name="Last_Seen" ColumnName="Last_Seen" />
+          <ScalarProperty Name="Last_Login" ColumnName="Last_Login" />
+          <ScalarProperty Name="ID_Permission" ColumnName="ID_Permission" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMLoaiGiayToes">
+      <EntityTypeMapping TypeName="DoiSimModel.DMLoaiGiayTo">
+        <MappingFragment StoreEntitySet="DMLoaiGiayTo">
+          <ScalarProperty Name="HoatDong" ColumnName="HoatDong" />
+          <ScalarProperty Name="LoaiGiayTo" ColumnName="LoaiGiayTo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMLyDoTons">
+      <EntityTypeMapping TypeName="DoiSimModel.DMLyDoTon">
+        <MappingFragment StoreEntitySet="DMLyDoTon">
+          <ScalarProperty Name="HoatDong" ColumnName="HoatDong" />
+          <ScalarProperty Name="LyDoTon" ColumnName="LyDoTon" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Convert_Sim_KH" FunctionName="DoiSimModel.Store.SP_Convert_Sim_KH" />
+    <FunctionImportMapping FunctionImportName="SP_Convert_Sim_Phieu_DaGiao_XLS_Da_Run" FunctionName="DoiSimModel.Store.SP_Convert_Sim_Phieu_DaGiao_XLS_Da_Run" />
+    <FunctionImportMapping FunctionImportName="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_KH_Da_Run" FunctionName="DoiSimModel.Store.SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_KH_Da_Run" />
+    <FunctionImportMapping FunctionImportName="SP_Create_User" FunctionName="DoiSimModel.Store.SP_Create_User" />
+    <EntitySetMapping Name="DMNguongTons">
+      <EntityTypeMapping TypeName="DoiSimModel.DMNguongTon">
+        <MappingFragment StoreEntitySet="DMNguongTon">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="NguongTon" ColumnName="NguongTon" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_Phieu_Da_Run" FunctionName="DoiSimModel.Store.SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_Phieu_Da_Run" />
+    <EntitySetMapping Name="Sim_Phieu">
+      <EntityTypeMapping TypeName="DoiSimModel.Sim_Phieu">
+        <MappingFragment StoreEntitySet="Sim_Phieu">
+          <ScalarProperty Name="CCCD_KhachHang" ColumnName="CCCD_KhachHang" />
+          <ScalarProperty Name="NgayHenMoi" ColumnName="NgayHenMoi" />
+          <ScalarProperty Name="GhiChu11" ColumnName="GhiChu11" />
+          <ScalarProperty Name="ID_LoaiGiayTo" ColumnName="ID_LoaiGiayTo" />
+          <ScalarProperty Name="NoiDungNhapTon" ColumnName="NoiDungNhapTon" />
+          <ScalarProperty Name="UserNhapTon" ColumnName="UserNhapTon" />
+          <ScalarProperty Name="TimeNhapTon" ColumnName="TimeNhapTon" />
+          <ScalarProperty Name="ID_LyDoTon" ColumnName="ID_LyDoTon" />
+          <ScalarProperty Name="Image_CamKetKhongCC" ColumnName="Image_CamKetKhongCC" />
+          <ScalarProperty Name="NoiDungKhoaPhieu" ColumnName="NoiDungKhoaPhieu" />
+          <ScalarProperty Name="UserKhoaPhieu" ColumnName="UserKhoaPhieu" />
+          <ScalarProperty Name="TimeKhoaPhieu" ColumnName="TimeKhoaPhieu" />
+          <ScalarProperty Name="NoiDungChiaPhieu2" ColumnName="NoiDungChiaPhieu2" />
+          <ScalarProperty Name="UserChiaPhieu2" ColumnName="UserChiaPhieu2" />
+          <ScalarProperty Name="TimeChiaPhieu2" ColumnName="TimeChiaPhieu2" />
+          <ScalarProperty Name="PhanMemKhoaPhieu" ColumnName="PhanMemKhoaPhieu" />
+          <ScalarProperty Name="ID_DonViKT" ColumnName="ID_DonViKT" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Image_BienBan" ColumnName="Image_BienBan" />
+          <ScalarProperty Name="Image_CMT_Sau" ColumnName="Image_CMT_Sau" />
+          <ScalarProperty Name="Image_CMT_Truoc" ColumnName="Image_CMT_Truoc" />
+          <ScalarProperty Name="ID_KetQuaThucHien" ColumnName="ID_KetQuaThucHien" />
+          <ScalarProperty Name="NoiDungThucHien" ColumnName="NoiDungThucHien" />
+          <ScalarProperty Name="DateThucHien" ColumnName="DateThucHien" />
+          <ScalarProperty Name="UserThucHien" ColumnName="UserThucHien" />
+          <ScalarProperty Name="TimeCapNhatKetQuaThucHien" ColumnName="TimeCapNhatKetQuaThucHien" />
+          <ScalarProperty Name="NoiDungNhanPhieu" ColumnName="NoiDungNhanPhieu" />
+          <ScalarProperty Name="UserNhanPhieu" ColumnName="UserNhanPhieu" />
+          <ScalarProperty Name="TimeNhanPhieu" ColumnName="TimeNhanPhieu" />
+          <ScalarProperty Name="NoiDungChiaPhieu" ColumnName="NoiDungChiaPhieu" />
+          <ScalarProperty Name="UserChiaPhieu" ColumnName="UserChiaPhieu" />
+          <ScalarProperty Name="TimeChiaPhieu" ColumnName="TimeChiaPhieu" />
+          <ScalarProperty Name="NoiDungXP" ColumnName="NoiDungXP" />
+          <ScalarProperty Name="UserXP" ColumnName="UserXP" />
+          <ScalarProperty Name="TimeXP" ColumnName="TimeXP" />
+          <ScalarProperty Name="ID_To" ColumnName="ID_To" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="ID_MucUuTien" ColumnName="ID_MucUuTien" />
+          <ScalarProperty Name="GioHen" ColumnName="GioHen" />
+          <ScalarProperty Name="DiaChiHenDoiSim" ColumnName="DiaChiHenDoiSim" />
+          <ScalarProperty Name="Ten_PX" ColumnName="Ten_PX" />
+          <ScalarProperty Name="Ten_QH" ColumnName="Ten_QH" />
+          <ScalarProperty Name="ModelDienThoai" ColumnName="ModelDienThoai" />
+          <ScalarProperty Name="LoaiDienThoai" ColumnName="LoaiDienThoai" />
+          <ScalarProperty Name="LoaiTB" ColumnName="LoaiTB" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ID_Sim_Trang" ColumnName="ID_Sim_Trang" />
+          <ScalarProperty Name="ID_Sim_KH" ColumnName="ID_Sim_KH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DoiSim_DM_ImageUnit">
+      <EntityTypeMapping TypeName="DoiSimModel.DoiSim_DM_ImageUnit">
+        <MappingFragment StoreEntitySet="DoiSim_DM_ImageUnit">
+          <ScalarProperty Name="Show" ColumnName="Show" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="HuongDan" ColumnName="HuongDan" />
+          <ScalarProperty Name="TenLoaiImage" ColumnName="TenLoaiImage" />
+          <ScalarProperty Name="LoaiImage" ColumnName="LoaiImage" />
+          <ScalarProperty Name="MaUnit" ColumnName="MaUnit" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sim_Phieu_NhatKyUpdate">
+      <EntityTypeMapping TypeName="DoiSimModel.Sim_Phieu_NhatKyUpdate">
+        <MappingFragment StoreEntitySet="Sim_Phieu_NhatKyUpdate">
+          <ScalarProperty Name="NoiDungUpDate" ColumnName="NoiDungUpDate" />
+          <ScalarProperty Name="UserUpdate" ColumnName="UserUpdate" />
+          <ScalarProperty Name="TimeUpdate" ColumnName="TimeUpdate" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ID_Sim_Phieu" ColumnName="ID_Sim_Phieu" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongKeDoiSimThanhCongs">
+      <EntityTypeMapping TypeName="DoiSimModel.ThongKeDoiSimThanhCong">
+        <MappingFragment StoreEntitySet="ThongKeDoiSimThanhCong">
+          <ScalarProperty Name="NgayDoiSim_VN" ColumnName="NgayDoiSim_VN" />
+          <ScalarProperty Name="NgayDoiSim" ColumnName="NgayDoiSim" />
+          <ScalarProperty Name="HoTenUserDoiSim" ColumnName="HoTenUserDoiSim" />
+          <ScalarProperty Name="UserDoiSim" ColumnName="UserDoiSim" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sim_KH_NhatKyUpdate">
+      <EntityTypeMapping TypeName="DoiSimModel.Sim_KH_NhatKyUpdate">
+        <MappingFragment StoreEntitySet="Sim_KH_NhatKyUpdate">
+          <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="DiaChiHenDoiSim" ColumnName="DiaChiHenDoiSim" />
+          <ScalarProperty Name="PXHenDoiSim" ColumnName="PXHenDoiSim" />
+          <ScalarProperty Name="QHHenDoiSim" ColumnName="QHHenDoiSim" />
+          <ScalarProperty Name="GioHen" ColumnName="GioHen" />
+          <ScalarProperty Name="GioGoi" ColumnName="GioGoi" />
+          <ScalarProperty Name="NguoiGoi" ColumnName="NguoiGoi" />
+          <ScalarProperty Name="ID_StatusOBKH" ColumnName="ID_StatusOBKH" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ID_Sim_KH" ColumnName="ID_Sim_KH" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_KiemTraSoLieu" FunctionName="DoiSimModel.Store.SP_KiemTraSoLieu" />
+    <FunctionImportMapping FunctionImportName="SP_ThongKeNSCL" FunctionName="DoiSimModel.Store.SP_ThongKeNSCL" />
+    <EntitySetMapping Name="DMDonViThongKeNSCLs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMDonViThongKeNSCL">
+        <MappingFragment StoreEntitySet="DMDonViThongKeNSCL">
+          <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+          <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMKyThongKeNSCLs">
+      <EntityTypeMapping TypeName="DoiSimModel.DMKyThongKeNSCL">
+        <MappingFragment StoreEntitySet="DMKyThongKeNSCL">
+          <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ThongKeNSCLs">
+      <EntityTypeMapping TypeName="DoiSimModel.ThongKeNSCL">
+        <MappingFragment StoreEntitySet="ThongKeNSCL">
+          <ScalarProperty Name="TongDiem" ColumnName="TongDiem" />
+          <ScalarProperty Name="GoiHenDoiSim4G_XuatPhieuDoiSim" ColumnName="GoiHenDoiSim4G_XuatPhieuDoiSim" />
+          <ScalarProperty Name="ThucHienDoiSim4G_ThanhCong" ColumnName="ThucHienDoiSim4G_ThanhCong" />
+          <ScalarProperty Name="GoiHenDoiSim4G_KHDaDoiTaiQuay" ColumnName="GoiHenDoiSim4G_KHDaDoiTaiQuay" />
+          <ScalarProperty Name="GoiHenDoiSim4G_ThanhCong" ColumnName="GoiHenDoiSim4G_ThanhCong" />
+          <ScalarProperty Name="ChucDanh" ColumnName="ChucDanh" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+          <ScalarProperty Name="ID_Ky" ColumnName="ID_Ky" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_KhoiTao_Sim_KH_NhatKyUpdate" FunctionName="DoiSimModel.Store.SP_KhoiTao_Sim_KH_NhatKyUpdate" />
+    <FunctionImportMapping FunctionImportName="SP_ThongKeOutBound" FunctionName="DoiSimModel.Store.SP_ThongKeOutBound" />
+    <FunctionImportMapping FunctionImportName="SP_ThongKeKetQuaDoiSim" FunctionName="DoiSimModel.Store.SP_ThongKeKetQuaDoiSim" />
+    <EntitySetMapping Name="ThongKeOutBounds">
+      <EntityTypeMapping TypeName="DoiSimModel.ThongKeOutBound">
+        <MappingFragment StoreEntitySet="ThongKeOutBound">
+          <ScalarProperty Name="PhieuDaXuat" ColumnName="PhieuDaXuat" />
+          <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
+          <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
+          <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+          <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
+          <ScalarProperty Name="Ten" ColumnName="Ten" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

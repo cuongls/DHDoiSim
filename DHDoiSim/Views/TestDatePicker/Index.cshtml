@@ -1,0 +1,72 @@
+﻿@model DHDoiSim.Models.UserList
+
+@{
+    ViewBag.Title = "www.compilemode.com";
+}
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+<script>
+  $(document).ready(function() {
+      $("#@Html.IdFor(m => m.Timestamps)").datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true
+      });
+  });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Timestamps, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Timestamps, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.Timestamps, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}  
+
+@*@model QuanLyChiPhi.Models.SCBDMayIn
+
+@{
+    ViewBag.Title = "www.compilemode.com";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<script>
+
+  $(document).ready(function() {
+      $("#NgayBaoSCBD").datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true
+      });
+  });
+</script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayBaoSCBD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayBaoSCBD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayBaoSCBD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}*@
+

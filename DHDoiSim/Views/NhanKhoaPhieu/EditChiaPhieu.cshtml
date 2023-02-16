@@ -1,0 +1,94 @@
+﻿@model DHDoiSim.Models.Sim_Phieu
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@*@{
+    ViewBag.Title = "Edit";
+}*@
+<h2>Phòng chia phiếu cho các Tổ</h2>
+<h4>@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="color:green">Mã phiếu: @ViewBag.ID_Sim_Phieu; Số ĐT: @ViewBag.SoDT </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.ID_Sim_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_Sim_KH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.ID_Sim_KH, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control", @id = "SN"} })
+                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserChiaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserChiaPhieu, new { htmlAttributes = new { @class = "form-control", @Value = user.USERNAME, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserChiaPhieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeChiaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeChiaPhieu, new { htmlAttributes = new { @class = "form-control", @Value = System.DateTime.Now, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TimeChiaPhieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDungChiaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDungChiaPhieu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiDungChiaPhieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_To, "ID_To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_To", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_To, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function OnGradeChanged_ST(element) {
+        //alert(value);
+        var text = element.options[element.selectedIndex].text;
+        $("#SN").val(text);
+    }
+    function OnGradeChanged_User(value) {
+        $("#USERTHUCHIEN").val(value);
+        //alert(value);
+    }
+
+</script>

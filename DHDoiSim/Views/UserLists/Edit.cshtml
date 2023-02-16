@@ -1,0 +1,279 @@
+﻿@model DHDoiSim.Models.UserList
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@{
+    ViewBag.Title = "Edit";
+}
+<head>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+<script>
+  $(document).ready(function() {
+      $("#@Html.IdFor(m => m.Birthday)").datepicker({
+          dateFormat: "dd-mm-yy",
+          changeMonth: true,
+          changeYear: true
+      });
+  });
+  $(document).ready(function() {
+      $("#@Html.IdFor(m => m.Timestamps)").datepicker({
+          dateFormat: "dd-mm-yy hh:mm:ss",
+          changeMonth: true,
+          changeYear: true
+      });
+  });
+</script>
+
+<h2 style="color:red">Đang thiết kế - Tạm đóng button Save</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>UserList</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID_User)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Avatar, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Avatar, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Avatar, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Permission, "ID_Permission", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Permission", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Permission, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Last_Login, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Last_Login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Last_Login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Last_Seen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Last_Seen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Last_Seen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Last_Seen_URL, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Last_Seen_URL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Last_Seen_URL, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Phong, "ID_Phong", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Phong", null, htmlAttributes: new { @class = "form-control", @onchange = "OnGradeChanged_Phong(this);" })
+                @Html.ValidationMessageFor(model => model.ID_Phong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_To, "ID_To", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_To", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_To, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Timestamps, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.Timestamps, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.EditorFor(model => model.Timestamps, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Timestamps, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoatDong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.HoatDong)
+                    @Html.ValidationMessageFor(model => model.HoatDong, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserCreate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserCreate, new { htmlAttributes = new { @class = "form-control", @Value = user.USERNAME, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserCreate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaDonVi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaDonVi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaDonVi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input type="submit" value="Save" class="btn btn-default" />*@
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function OnGradeChanged_Phong_DangLam(value) {
+        //Lưu ý url khác nhau theo tình huống
+        //Nếu không gọi được hàm gán địa chỉ cụ thể url: "http://10.10.117.71/DHDoiSim/OutBound/Get_PX"
+        //alert(value);
+        //$("#Nam").val(value);
+        $("#IDPX_").empty();
+        $("#QHHDS").val(value);
+        //$('#IDPX_').append('<option value="abc">xyz</option>');
+        //var a = "a,b,c".split(","), i;
+        //for (i = 0; i < a.length; i++) {
+        //    if (a[i].length > 0)
+        //        $('#IDPX_').append('<option value="' + a[i] + '"> ' + a[i] + ' </option>');
+        //}
+        //url: "/DHDoiSim/OutBound/Get_PX",
+        $.ajax({
+            type: "GET",
+            url: "/OutBound/Get_PX",
+            data: { qh: value },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                var a = response.replace("\"", "").replace("\"", "").split(","), i;
+                for (i = 0; i < a.length; i++) {
+                    if (a[i].length > 0)
+                        $('#IDPX_').append('<option value="' + a[i] + '"> ' + a[i] + ' </option>');
+                }
+                //alert(response.responseText);
+                //$('#dialog').show('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+        });
+        //alert(value);
+    }
+    function OnGradeChanged_PX(value) {
+        //$("#Thang").val(value);
+        //alert(value);
+        $("#PXHDS").val(value);
+        $.ajax({
+            type: "GET",
+            url: "/OutBound/Get_TenPhong",
+            data: { px: value },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                var a = response.replace("\"", "").replace("\"", "");
+                $('#TENPHONG').val(a);
+                //alert(response.responseText);
+                //$('#dialog').show('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+        });
+    }
+    function OnGradeChanged_IDBaoCao(value) {
+        $("#IDBaoCao").val(value);
+        //alert(value);
+    }
+</script>

@@ -1,0 +1,266 @@
+﻿@model DHDoiSim.Models.Sim_Phieu
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sim_Phieu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiTB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiTB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_QH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_QH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ten_PX)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ten_PX)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChiHenDoiSim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChiHenDoiSim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioHen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GioHen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungXP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungXP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeChiaPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeChiaPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserChiaPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserChiaPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungChiaPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungChiaPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeNhanPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeNhanPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserNhanPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserNhanPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungNhanPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungNhanPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeCapNhatKetQuaThucHien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeCapNhatKetQuaThucHien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserThucHien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserThucHien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateThucHien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateThucHien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoiDungThucHien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoiDungThucHien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_CMT_Truoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_CMT_Truoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_CMT_Sau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_CMT_Sau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image_BienBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image_BienBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMKetQuaThucHien.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMKetQuaThucHien.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMMucUuTien.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMMucUuTien.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMPhong.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMPhong.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMTo.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMTo.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sim_KH.SoDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sim_KH.SoDT)
+        </dd>
+
+    </dl>
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

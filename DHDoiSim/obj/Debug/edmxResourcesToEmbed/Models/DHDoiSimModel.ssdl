@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DoiSimModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DMDiaBan">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DMDonViKT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenTat" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMDonViThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMKetQuaThucHien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMKyThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Thang" Type="int" />
+    <Property Name="Nam" Type="int" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMLoaiGiayTo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoaiGiayTo" Type="nvarchar" MaxLength="300" />
+    <Property Name="HoatDong" Type="bit" />
+  </EntityType>
+  <EntityType Name="DMLyDoTon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LyDoTon" Type="nvarchar" MaxLength="300" />
+    <Property Name="HoatDong" Type="bit" />
+  </EntityType>
+  <EntityType Name="DMMucUuTien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMNguongTon">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NguongTon" Type="float" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMPhong">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_DonViKT" Type="int" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenTat" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMQHPX">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ten_QH" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten_PX" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="TenPhong" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMStatusOBKH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMStatusSimTrang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMStatusSuDung">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="DMTo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DoiSim_DM_ImageUnit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaUnit" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoaiImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="TenLoaiImage" Type="nvarchar" MaxLength="200" />
+    <Property Name="HuongDan" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="20" />
+    <Property Name="Show" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="ID_Permission" />
+    </Key>
+    <Property Name="ID_Permission" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Permission_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Timestamps" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DoiSim.dbo.QHPX_Phong_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="QHPX_Phong_XLS">
+          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+  <EntityType Name="Sim_KH">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="Loai_TB" Type="nvarchar" MaxLength="200" />
+    <Property Name="BTS_Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Code" Type="nvarchar" MaxLength="100" />
+    <Property Name="Model" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dia_Chi_BTS" Type="nvarchar" MaxLength="300" />
+    <Property Name="Don_Vi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TTVT" Type="nvarchar" MaxLength="100" />
+    <Property Name="Dia_Chi_BTS2" Type="nvarchar" MaxLength="300" />
+    <Property Name="Phuong_Xa_ID" Type="int" />
+    <Property Name="Quan_Huyen_ID" Type="int" />
+    <Property Name="Ve_Tinh_ID" Type="int" />
+    <Property Name="TenPhong" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten_TT" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten_QH" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten_PX" Type="nvarchar" MaxLength="100" />
+    <Property Name="Doi_ID" Type="int" />
+    <Property Name="Ten_Doi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TT_ID" Type="int" />
+    <Property Name="TimeUpFile" Type="datetime" />
+    <Property Name="UserUpFile" Type="nvarchar" MaxLength="100" />
+    <Property Name="Timestamps" Type="datetime" />
+    <Property Name="ID_DonViKT" Type="int" />
+    <Property Name="ID_StatusOBKH" Type="int" />
+    <Property Name="NguoiGoi" Type="nvarchar" MaxLength="100" />
+    <Property Name="GioGoi" Type="datetime" />
+    <Property Name="GioHen" Type="datetime" />
+    <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+    <Property Name="ID_KetQuaThucHien" Type="int" />
+    <Property Name="LyDoPhanDiaBan" Type="nvarchar" MaxLength="300" />
+    <Property Name="TieuChi" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu1" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu2" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu3" Type="nvarchar" MaxLength="300" />
+    <Property Name="QHHenDoiSim" Type="nvarchar" MaxLength="100" />
+    <Property Name="PXHenDoiSim" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Sim_KH_NhatKyUpdate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Sim_KH" Type="int" />
+    <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_StatusOBKH" Type="int" />
+    <Property Name="NguoiGoi" Type="nvarchar" MaxLength="100" />
+    <Property Name="GioGoi" Type="datetime" />
+    <Property Name="GioHen" Type="datetime" />
+    <Property Name="QHHenDoiSim" Type="nvarchar" MaxLength="100" />
+    <Property Name="PXHenDoiSim" Type="nvarchar" MaxLength="100" />
+    <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="300" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+    <Property Name="TenPhong" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DoiSim.dbo.Sim_KH_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sim_KH_XLS">
+          <Property Name="SoDT_Cu" Type="float" />
+          <Property Name="LOAI_TB" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="MODEL" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="GioGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="KetQuaGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayHen" Type="nvarchar" MaxLength="255" />
+          <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="KetQuaDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
+          <Property Name="DIA_CHI_BTS" Type="nvarchar" MaxLength="255" />
+          <Property Name="F19" Type="nvarchar" MaxLength="255" />
+          <Property Name="F20" Type="nvarchar" MaxLength="255" />
+          <Property Name="F21" Type="nvarchar" MaxLength="255" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="F23" Type="nvarchar" MaxLength="255" />
+          <Property Name="F24" Type="nvarchar" MaxLength="255" />
+          <Property Name="F25" Type="nvarchar" MaxLength="255" />
+          <Property Name="F26" Type="nvarchar" MaxLength="255" />
+          <Property Name="F27" Type="nvarchar" MaxLength="255" />
+          <Property Name="F28" Type="nvarchar" MaxLength="255" />
+          <Property Name="F29" Type="nvarchar" MaxLength="255" />
+          <Property Name="F30" Type="nvarchar" MaxLength="255" />
+          <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="Sim_Phieu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Sim_KH" Type="int" />
+    <Property Name="ID_Sim_Trang" Type="int" />
+    <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="LoaiTB" Type="nvarchar" MaxLength="200" />
+    <Property Name="LoaiDienThoai" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModelDienThoai" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ten_QH" Type="nvarchar" MaxLength="50" />
+    <Property Name="Ten_PX" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="300" />
+    <Property Name="GioHen" Type="datetime" />
+    <Property Name="ID_MucUuTien" Type="int" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="ID_To" Type="int" />
+    <Property Name="TimeXP" Type="datetime" />
+    <Property Name="UserXP" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungXP" Type="nvarchar" MaxLength="300" />
+    <Property Name="TimeChiaPhieu" Type="datetime" />
+    <Property Name="UserChiaPhieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungChiaPhieu" Type="nvarchar" MaxLength="300" />
+    <Property Name="TimeNhanPhieu" Type="datetime" />
+    <Property Name="UserNhanPhieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungNhanPhieu" Type="nvarchar" MaxLength="300" />
+    <Property Name="TimeCapNhatKetQuaThucHien" Type="datetime" />
+    <Property Name="UserThucHien" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateThucHien" Type="date" />
+    <Property Name="NoiDungThucHien" Type="nvarchar" MaxLength="500" />
+    <Property Name="ID_KetQuaThucHien" Type="int" />
+    <Property Name="Image_CMT_Truoc" Type="nvarchar" MaxLength="300" />
+    <Property Name="Image_CMT_Sau" Type="nvarchar" MaxLength="300" />
+    <Property Name="Image_BienBan" Type="nvarchar" MaxLength="300" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+    <Property Name="ID_DonViKT" Type="int" />
+    <Property Name="PhanMemKhoaPhieu" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeChiaPhieu2" Type="datetime" />
+    <Property Name="UserChiaPhieu2" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungChiaPhieu2" Type="nvarchar" MaxLength="300" />
+    <Property Name="TimeKhoaPhieu" Type="datetime" />
+    <Property Name="UserKhoaPhieu" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungKhoaPhieu" Type="nvarchar" MaxLength="300" />
+    <Property Name="Image_CamKetKhongCC" Type="nvarchar" MaxLength="300" />
+    <Property Name="ID_LyDoTon" Type="int" />
+    <Property Name="TimeNhapTon" Type="datetime" />
+    <Property Name="UserNhapTon" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungNhapTon" Type="nvarchar" MaxLength="300" />
+    <Property Name="ID_LoaiGiayTo" Type="int" />
+    <Property Name="GhiChu11" Type="nvarchar" MaxLength="300" />
+    <Property Name="NgayHenMoi" Type="date" />
+    <Property Name="CCCD_KhachHang" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Sim_Phieu_DaGiao_XLS">
+          <Property Name="TenPhong" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_Phong" Type="int" />
+          <Property Name="TenTo" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_To" Type="int" />
+          <Property Name="SoDT_Float" Type="float" />
+          <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOAI_TB" Type="nvarchar" MaxLength="255" />
+          <Property Name="Code" Type="nvarchar" MaxLength="255" />
+          <Property Name="MODEL" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiGoi_User" Type="nvarchar" MaxLength="255" />
+          <Property Name="GioGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayGoi" Type="datetime" />
+          <Property Name="NgayGoi_DT" Type="datetime" />
+          <Property Name="KetQuaGoi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_StatusOBKH" Type="int" />
+          <Property Name="NgayHen" Type="datetime" />
+          <Property Name="NgayHen_DT" Type="datetime" />
+          <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="NguoiDoiSim_User" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayDoiSim_DT" Type="datetime" />
+          <Property Name="KetQuaDoiSim" Type="nvarchar" MaxLength="255" />
+          <Property Name="ID_KetQuaThucHien" Type="int" />
+          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
+          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayGiaoPhieu" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayGiaoPhieu_DT" Type="datetime" />
+          <Property Name="GhiChu2" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayPhongGiaoPhieu" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayPhongGiaoPhieu_DT" Type="datetime" />
+          <Property Name="ID_Sim_KH" Type="int" />
+          <Property Name="UserKhoaPhieu" Type="nvarchar" MaxLength="100" />
+          <Property Name="TimeKhoaPhieu" Type="datetime" />
+          <Property Name="NoiDungKhoaPhieu" Type="nvarchar" MaxLength="300" />
+        </EntityType>-->
+  <EntityType Name="Sim_Phieu_NhatKyUpdate">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Sim_Phieu" Type="int" />
+    <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeUpdate" Type="datetime" />
+    <Property Name="UserUpdate" Type="nvarchar" MaxLength="100" />
+    <Property Name="NoiDungUpDate" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Sim_Trang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="STT" Type="int" />
+    <Property Name="LoaiHang" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenhGia" Type="float" />
+    <Property Name="ThucCap" Type="int" />
+    <Property Name="ThanhTien" Type="float" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="BaoHanh" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgayBanGiao" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="ID_To" Type="int" />
+    <Property Name="TimeUpdate" Type="datetime" />
+    <Property Name="UserUpdate" Type="nvarchar" MaxLength="100" />
+    <Property Name="Timestamps" Type="datetime" />
+    <Property Name="ID_StatusSuDung" Type="int" />
+    <Property Name="ID_DonViKT" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TestTable">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="A" Type="nvarchar" MaxLength="50" />
+    <Property Name="B" Type="nvarchar" MaxLength="50" />
+    <Property Name="C" Type="int" />
+    <Property Name="D" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ThongBao">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NoiDung" Type="nvarchar(max)" />
+    <Property Name="NgayNhap" Type="datetime" />
+    <Property Name="NguoiNhap" Type="nvarchar" MaxLength="100" />
+    <Property Name="HoatDong" Type="bit" />
+  </EntityType>
+  <EntityType Name="ThongKe">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="DoiSimThanhCong" Type="int" />
+    <Property Name="SoSimTrangDaCap" Type="int" />
+    <Property Name="DoiSimKhongThanhCong" Type="int" />
+    <Property Name="ChuaCoKetQua" Type="int" />
+    <Property Name="TongSoPhieu" Type="int" />
+    <Property Name="TyLeDoiSimThanhCong" Type="float" />
+    <Property Name="NgayBC" Type="date" />
+    <Property Name="NgayGioTaoBaoCao" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ThongKeDoiSimThanhCong">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserDoiSim" Type="nvarchar" MaxLength="100" />
+    <Property Name="HoTenUserDoiSim" Type="nvarchar" MaxLength="100" />
+    <Property Name="NgayDoiSim" Type="date" />
+    <Property Name="NgayDoiSim_VN" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ThongKeNSCL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Thang" Type="int" />
+    <Property Name="Nam" Type="int" />
+    <Property Name="ID_Ky" Type="int" />
+    <Property Name="MaDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChucDanh" Type="nvarchar" MaxLength="100" />
+    <Property Name="GoiHenDoiSim4G_ThanhCong" Type="int" />
+    <Property Name="GoiHenDoiSim4G_KHDaDoiTaiQuay" Type="int" />
+    <Property Name="ThucHienDoiSim4G_ThanhCong" Type="int" />
+    <Property Name="GoiHenDoiSim4G_XuatPhieuDoiSim" Type="int" />
+    <Property Name="TongDiem" Type="float" />
+  </EntityType>
+  <EntityType Name="ThongKeOutBound">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+    <Property Name="Ten" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="TenDonVi" Type="nvarchar" MaxLength="200" />
+    <Property Name="TuNgay" Type="date" />
+    <Property Name="DenNgay" Type="date" />
+    <Property Name="PhieuDaXuat" Type="int" />
+  </EntityType>
+  <EntityType Name="UserList">
+    <Key>
+      <PropertyRef Name="ID_User" />
+    </Key>
+    <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="300" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Birthday" Type="date" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID_Permission" Type="int" />
+    <Property Name="Last_Login" Type="datetime" />
+    <Property Name="Last_Seen" Type="nvarchar" MaxLength="100" />
+    <Property Name="Last_Seen_URL" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_Phong" Type="int" />
+    <Property Name="ID_To" Type="int" />
+    <Property Name="Timestamps" Type="datetime" />
+    <Property Name="HoatDong" Type="bit" />
+    <Property Name="UserCreate" Type="nvarchar" MaxLength="100" />
+    <Property Name="MaDonVi" Type="nvarchar" MaxLength="100" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_DMPhong_DMDonViKT">
+    <End Role="DMDonViKT" Type="Self.DMDonViKT" Multiplicity="0..1" />
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DMPhong">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DMTo_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="DMTo" Type="Self.DMTo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DMTo">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_DMDonViKT">
+    <End Role="DMDonViKT" Type="Self.DMDonViKT" Multiplicity="0..1" />
+    <End Role="Sim_KH" Type="Self.Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_DMKetQuaThucHien">
+    <End Role="DMKetQuaThucHien" Type="Self.DMKetQuaThucHien" Multiplicity="0..1" />
+    <End Role="Sim_KH" Type="Self.Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMKetQuaThucHien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_KetQuaThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_DMStatusOBKH">
+    <End Role="DMStatusOBKH" Type="Self.DMStatusOBKH" Multiplicity="0..1" />
+    <End Role="Sim_KH" Type="Self.Sim_KH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusOBKH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH">
+        <PropertyRef Name="ID_StatusOBKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_NhatKyUpdate_DMStatusOBKH">
+    <End Role="DMStatusOBKH" Type="Self.DMStatusOBKH" Multiplicity="0..1" />
+    <End Role="Sim_KH_NhatKyUpdate" Type="Self.Sim_KH_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusOBKH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH_NhatKyUpdate">
+        <PropertyRef Name="ID_StatusOBKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_KH_NhatKyUpdate_Sim_KH">
+    <End Role="Sim_KH" Type="Self.Sim_KH" Multiplicity="0..1" />
+    <End Role="Sim_KH_NhatKyUpdate" Type="Self.Sim_KH_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_KH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_KH_NhatKyUpdate">
+        <PropertyRef Name="ID_Sim_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMKetQuaThucHien">
+    <End Role="DMKetQuaThucHien" Type="Self.DMKetQuaThucHien" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMKetQuaThucHien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_KetQuaThucHien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMLoaiGiayTo">
+    <End Role="DMLoaiGiayTo" Type="Self.DMLoaiGiayTo" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMLoaiGiayTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_LoaiGiayTo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMLyDoTo">
+    <End Role="DMLyDoTon" Type="Self.DMLyDoTon" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMLyDoTon">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_LyDoTon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMMucUuTien">
+    <End Role="DMMucUuTien" Type="Self.DMMucUuTien" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMMucUuTien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_MucUuTien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_DMTo">
+    <End Role="DMTo" Type="Self.DMTo" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu">
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="0..1" />
+    <End Role="Sim_Phieu_NhatKyUpdate" Type="Self.Sim_Phieu_NhatKyUpdate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_Phieu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu_NhatKyUpdate">
+        <PropertyRef Name="ID_Sim_Phieu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Phieu_Sim_KH">
+    <End Role="Sim_KH" Type="Self.Sim_KH" Multiplicity="0..1" />
+    <End Role="Sim_Phieu" Type="Self.Sim_Phieu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sim_KH">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Phieu">
+        <PropertyRef Name="ID_Sim_KH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMDonViKT">
+    <End Role="DMDonViKT" Type="Self.DMDonViKT" Multiplicity="0..1" />
+    <End Role="Sim_Trang" Type="Self.Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMDonViKT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_DonViKT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="Sim_Trang" Type="Self.Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMStatusSuDung">
+    <End Role="DMStatusSuDung" Type="Self.DMStatusSuDung" Multiplicity="0..1" />
+    <End Role="Sim_Trang" Type="Self.Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMStatusSuDung">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_StatusSuDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sim_Trang_DMTo">
+    <End Role="DMTo" Type="Self.DMTo" Multiplicity="0..1" />
+    <End Role="Sim_Trang" Type="Self.Sim_Trang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sim_Trang">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ThongKe_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="ThongKe" Type="Self.ThongKe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ThongKe">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserList_DMPhong">
+    <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
+    <End Role="UserList" Type="Self.UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMPhong">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_Phong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserList_DMTo">
+    <End Role="DMTo" Type="Self.DMTo" Multiplicity="0..1" />
+    <End Role="UserList" Type="Self.UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMTo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_To" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserList_Permission">
+    <End Role="Permission" Type="Self.Permission" Multiplicity="0..1" />
+    <End Role="UserList" Type="Self.UserList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="ID_Permission" />
+      </Principal>
+      <Dependent Role="UserList">
+        <PropertyRef Name="ID_Permission" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_Convert_Sim_KH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Convert_Sim_Phieu_DaGiao_XLS_Da_Run" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_KH_Da_Run" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Convert_Sim_Phieu_DaGiao_XLS_To_Sim_Phieu_Da_Run" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_Create_User" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_CreateTable_Sim_KH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_CreateTable_Sim_Phieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_CreateTable_Sim_Trang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_Insert_Sim_KH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_KhoiTao_Sim_KH_NhatKyUpdate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_KiemTraSoLieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_QHPX" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ThongKeKetQuaDoiSim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="DenNgay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="SP_ThongKeNSCL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Thang" Type="int" Mode="In" />
+    <Parameter Name="Nam" Type="int" Mode="In" />
+    <Parameter Name="MaDonVi" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_ThongKeOutBound" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MaDonVi" Type="nvarchar" Mode="In" />
+    <Parameter Name="TuNgay" Type="datetime" Mode="In" />
+    <Parameter Name="DenNgay" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="StrToDateTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+    <Parameter Name="mystr" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="DoiSimModelStoreContainer">
+    <EntitySet Name="DMDiaBan" EntityType="Self.DMDiaBan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMDonViKT" EntityType="Self.DMDonViKT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMDonViThongKeNSCL" EntityType="Self.DMDonViThongKeNSCL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMKetQuaThucHien" EntityType="Self.DMKetQuaThucHien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMKyThongKeNSCL" EntityType="Self.DMKyThongKeNSCL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMLoaiGiayTo" EntityType="Self.DMLoaiGiayTo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMLyDoTon" EntityType="Self.DMLyDoTon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMMucUuTien" EntityType="Self.DMMucUuTien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMNguongTon" EntityType="Self.DMNguongTon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMPhong" EntityType="Self.DMPhong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMQHPX" EntityType="Self.DMQHPX" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMStatusOBKH" EntityType="Self.DMStatusOBKH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMStatusSimTrang" EntityType="Self.DMStatusSimTrang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMStatusSuDung" EntityType="Self.DMStatusSuDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DMTo" EntityType="Self.DMTo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoiSim_DM_ImageUnit" EntityType="Self.DoiSim_DM_ImageUnit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim_KH" EntityType="Self.Sim_KH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim_KH_NhatKyUpdate" EntityType="Self.Sim_KH_NhatKyUpdate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim_Phieu" EntityType="Self.Sim_Phieu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim_Phieu_NhatKyUpdate" EntityType="Self.Sim_Phieu_NhatKyUpdate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sim_Trang" EntityType="Self.Sim_Trang" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TestTable" EntityType="Self.TestTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongKe" EntityType="Self.ThongKe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongKeDoiSimThanhCong" EntityType="Self.ThongKeDoiSimThanhCong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongKeNSCL" EntityType="Self.ThongKeNSCL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ThongKeOutBound" EntityType="Self.ThongKeOutBound" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserList" EntityType="Self.UserList" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DMPhong_DMDonViKT" Association="Self.FK_DMPhong_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKT" />
+      <End Role="DMPhong" EntitySet="DMPhong" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DMTo_DMPhong" Association="Self.FK_DMTo_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhong" />
+      <End Role="DMTo" EntitySet="DMTo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_DMDonViKT" Association="Self.FK_Sim_KH_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKT" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_DMKetQuaThucHien" Association="Self.FK_Sim_KH_DMKetQuaThucHien">
+      <End Role="DMKetQuaThucHien" EntitySet="DMKetQuaThucHien" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_DMStatusOBKH" Association="Self.FK_Sim_KH_DMStatusOBKH">
+      <End Role="DMStatusOBKH" EntitySet="DMStatusOBKH" />
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_NhatKyUpdate_DMStatusOBKH" Association="Self.FK_Sim_KH_NhatKyUpdate_DMStatusOBKH">
+      <End Role="DMStatusOBKH" EntitySet="DMStatusOBKH" />
+      <End Role="Sim_KH_NhatKyUpdate" EntitySet="Sim_KH_NhatKyUpdate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_KH_NhatKyUpdate_Sim_KH" Association="Self.FK_Sim_KH_NhatKyUpdate_Sim_KH">
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+      <End Role="Sim_KH_NhatKyUpdate" EntitySet="Sim_KH_NhatKyUpdate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMKetQuaThucHien" Association="Self.FK_Sim_Phieu_DMKetQuaThucHien">
+      <End Role="DMKetQuaThucHien" EntitySet="DMKetQuaThucHien" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMLoaiGiayTo" Association="Self.FK_Sim_Phieu_DMLoaiGiayTo">
+      <End Role="DMLoaiGiayTo" EntitySet="DMLoaiGiayTo" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMLyDoTo" Association="Self.FK_Sim_Phieu_DMLyDoTo">
+      <End Role="DMLyDoTon" EntitySet="DMLyDoTon" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMMucUuTien" Association="Self.FK_Sim_Phieu_DMMucUuTien">
+      <End Role="DMMucUuTien" EntitySet="DMMucUuTien" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMPhong" Association="Self.FK_Sim_Phieu_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhong" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_DMTo" Association="Self.FK_Sim_Phieu_DMTo">
+      <End Role="DMTo" EntitySet="DMTo" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" Association="Self.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu">
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+      <End Role="Sim_Phieu_NhatKyUpdate" EntitySet="Sim_Phieu_NhatKyUpdate" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Phieu_Sim_KH" Association="Self.FK_Sim_Phieu_Sim_KH">
+      <End Role="Sim_KH" EntitySet="Sim_KH" />
+      <End Role="Sim_Phieu" EntitySet="Sim_Phieu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMDonViKT" Association="Self.FK_Sim_Trang_DMDonViKT">
+      <End Role="DMDonViKT" EntitySet="DMDonViKT" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMPhong" Association="Self.FK_Sim_Trang_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhong" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMStatusSuDung" Association="Self.FK_Sim_Trang_DMStatusSuDung">
+      <End Role="DMStatusSuDung" EntitySet="DMStatusSuDung" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sim_Trang_DMTo" Association="Self.FK_Sim_Trang_DMTo">
+      <End Role="DMTo" EntitySet="DMTo" />
+      <End Role="Sim_Trang" EntitySet="Sim_Trang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ThongKe_DMPhong" Association="Self.FK_ThongKe_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhong" />
+      <End Role="ThongKe" EntitySet="ThongKe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserList_DMPhong" Association="Self.FK_UserList_DMPhong">
+      <End Role="DMPhong" EntitySet="DMPhong" />
+      <End Role="UserList" EntitySet="UserList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserList_DMTo" Association="Self.FK_UserList_DMTo">
+      <End Role="DMTo" EntitySet="DMTo" />
+      <End Role="UserList" EntitySet="UserList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserList_Permission" Association="Self.FK_UserList_Permission">
+      <End Role="Permission" EntitySet="Permission" />
+      <End Role="UserList" EntitySet="UserList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

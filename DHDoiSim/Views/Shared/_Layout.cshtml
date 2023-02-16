@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Điều hành Đổi SIM - TTDHTT</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @*<script type="text/javascript" src="~/Scripts/date.format.js"></script>*@
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js" charset="UTF-8"></script>
+    @*<script type="text/javascript" src="~/Scripts/bootstrap-datetimepicker.js" charset="UTF-8"></script>*@
+
+
+    @*Lấy của ThiTracNghiem*@
+    @*<link rel="stylesheet" href="~/Assets/css/normalize.css">
+    <link rel="stylesheet" href="~/Assets/css/style.min.css">
+    <link rel="stylesheet" href="~/Assets/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Assets/css/materialize.min.css">
+    <link rel="stylesheet" href="~/Assets/DataTables/css/jquery.dataTables.css">
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Assets/js/materialize.min.js"></script>
+    <script src="~/Assets/DataTables/js/jquery.dataTables.js"></script>*@
+    @*Hết Lấy của ThiTracNghiem*@
+
+
+    <style>
+        .navbar-nav li:hover > ul.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+            .dropdown-submenu > .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -6px;
+            }
+
+        /* rotate caret on hover */
+        .dropdown-menu > li > a:hover:after {
+            text-decoration: underline;
+            transform: rotate(-90deg);
+        }
+        /*body.modal-open .modal {
+            display: flex !important;
+            height: 100%;
+        }
+
+        body.modal-open .modal .modal-dialog {
+            margin: auto;
+        }*/
+        .textcolor {
+            color: white;
+        }
+    </style>
+
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" media="screen">
+    @*<link href="~/Theme/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
+
+    <link href="/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="/Content/font-awesome.css">
+
+    <script type="text/javascript" src="/Scripts/jquery-1.8.3.min.js"></script>
+
+
+    @* 5/10
+        <script src="~/Theme/jquery-3.5.1.js"></script>
+            <script type="text/javascript" src="/Scripts/date.format.js"></script>
+
+    *@
+    <script src="~/Theme/jquery.dataTables.min.js"></script>
+    <script src="~/Theme/dataTables.bootstrap.min.js"></script>
+    <script src="~/Theme/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Theme/dataTables.responsive.min.js"></script>
+    <script src="~/Theme/responsive.bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="/Scripts/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/Scripts/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/Scripts/DuynkCommonScript.js" charset="UTF-8"></script>
+
+
+    <link href="~/Theme/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Theme/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Theme/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .textcolor {
+            color: white;
+        }
+
+        .navbar-inverse {
+            background-color: #007dba;
+            border-color: #080808;
+            color: white;
+        }
+
+        #ntext {
+            color: #000000;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-header" style="color:white">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand textcolor", @style = "color:white" })
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hệ thống<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("Đăng Nhập", "Logout", "Home")</li>
+                            <li>@Html.ActionLink("Đăng xuất", "Logout", "Home")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Điều hành<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("OutBound & Xuất phiếu", "Index", "OutBound")</li>
+                            <li>@Html.ActionLink("Phòng chia phiếu cho Tổ", "ChiaPhieu", "NhanKhoaPhieu")</li>
+                            <li>@Html.ActionLink("Khóa phiếu Đổi Sim", "Index", "NhanKhoaPhieu")</li>
+                            <li>@Html.ActionLink("Nhập,Xuất phiếu,Khóa phiếu TB ngoài danh sách", "CreateThueBaoMoiVaXP", "OutBound")</li>
+                            <li>@Html.ActionLink("Cập nhật lại Giấy tờ, Seri sim Phiếu đã khóa", "PhieuDaKhoa", "NhanKhoaPhieu")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tra cứu<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("Kết quả OutBound", "TraCuu", "OutBound")</li>
+                            <li>@Html.ActionLink("Phiếu Đổi Sim", "TraCuu", "NhanKhoaPhieu")</li>
+                            <li>@Html.ActionLink("Sim trắng", "TraCuu", "SimTrang")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thống kê<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("Kết quả đổi Sim", "KetQuaDoiSim", "ThongKes")</li>
+                            <li>@Html.ActionLink("Đổi sim thành công", "DoiSimThanhCong", "NhanKhoaPhieu")</li>
+                            <li>@Html.ActionLink("Tổng hợp OutBound cá nhân", "ThongKeOutBound", "ThongKes")</li>
+                            <li>@Html.ActionLink("Năng suất chất lượng bộ phận OutBound", "NSCL", "ThongKes")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cập nhật Dữ liệu<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("Nhập sim trắng theo BBBG", "NhapTheoDaiSerial", "NhapSimTrang")</li>
+                            <li>@Html.ActionLink("Khách hàng", "Index", "OutBound")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Danh mục<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Tổ chức<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Phòng", "Index", "DMPhong")</li>
+                                    <li>@Html.ActionLink("Tổ", "Index", "DMTo")</li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Trạng thái<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Outbound Khách hàng", "Index", "DMStatusOBKH")</li>
+                                    <li>@Html.ActionLink("Phiếu", "Index", "DMStatusPhieu")</li>
+                                    <li>@Html.ActionLink("Sim trắng", "Index", "DMStatusSimTrang")</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="color: white" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quản trị<span class="caret"></span></a>
+                        <ul class="dropdown-menu" style="font-size:large">
+                            <li>@Html.ActionLink("Phân quyền User", "Index", "UserLists")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-cog"></span>...<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("TestDatePicker", "Index", "TestDatePicker")</li>
+                            <li>@Html.ActionLink("UploadFile", "UploadFile", "Upload")</li>
+                            <li>@Html.ActionLink("SimPhieu", "Index", "SimPhieu")</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                @*@Html.Partial("_LoginPartial")*@
+            </div>
+
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <ul>
+            </ul>
+            <p style="color: green">@Session["UserName"] - @Session["Phong"]</p>
+            <p>&copy; @DateTime.Now.Year - Điều hành Đổi SIM - TTDHTT</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿@using DHDoiSim.Models
+@model LoginModel
+@{
+    /**/
+
+    ViewBag.Title = "Đăng Nhập XTTT TD";
+}
+<div id="status" class="status"></div>
+@*Gốc: <div class="fade"> lấy từ TracNghiemOnline - Không hiển thị*@
+@*jumbotron lấy từ View.Home.Index.cshtml *@
+<h2>@ViewBag.Title</h2>
+<h4 style="color:green">Địa chỉ truy nhập qua Internet: 203.210.142.246:8003</h4>
+<h4 style="color:green">Hỗ trợ dữ liệu và sử dụng trang Web: Hồ Nam Thái - Phòng Kỹ Thuật - TT ĐHTT</h4>
+<h4 style="color:green">Hỗ trợ sử dụng app: Nguyễn Thu Hà - Phòng Kỹ Thuật - TT ĐHTT</h4>
+
+<div class="row">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Index", "Login", FormMethod.Post)) //.Post
+            {
+                if (ViewBag.error != null)
+                {
+                    <span class="title failed">@ViewBag.error</span>
+                }
+                <hr />
+                @*
+                    <div class="input-field">
+                        <label for="username">Tài Khoản</label>
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @required = "required", @autofocus = "autofocus" })
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Mật Khẩu</label>
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required" })
+                    </div>
+                    <br />
+                    <div class="login-btn">
+                        <button type="submit" class="btn waves-effect waves-light fa-reddit darken-4">Đăng Nhập</button>
+                    </div>
+                *@
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Username, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+

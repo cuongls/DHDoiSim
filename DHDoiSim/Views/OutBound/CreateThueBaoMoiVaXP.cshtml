@@ -1,0 +1,272 @@
+﻿@model DHDoiSim.Models.Sim_KH
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nhập Thuê bao ngoài danh sách và đã đổi Sim thành công</h2>
+<h4 style="color:red">@ViewBag.Message</h4>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SoDT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.SoDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SoDT, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @Html.Label("Nhập 11 số 84xxxxxxxxx")
+                </font>
+            </div>
+        </div>
+ 
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_StatusOBKH, "StatusOBKH", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("ID_StatusOBKH", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_StatusOBKH, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @Html.Label("Lưu ý chọn mục này")
+                </font>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Loai_TB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Loai_TB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Loai_TB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Model, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Model, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiaChiHenDoiSim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiaChiHenDoiSim, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DiaChiHenDoiSim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.TenPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenPhong, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TenPhong, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QHHenDoiSim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.QHHenDoiSim, new { htmlAttributes = new { @class = "form-control", @id = "TenQH", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.QHHenDoiSim, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <select id="IDQH_" class="form-control" onchange="OnGradeChanged_QH(this.value);">
+                    <option value="" selected>Chọn Quận huyện</option>
+                    @{
+                        foreach (var item in ViewBag.list_qh)
+                        {
+                            <option value="@item.Ten_QH">@item.Ten_QH</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @Html.Label("Quận huyện")
+                </font>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PXHenDoiSim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.PXHenDoiSim, new { htmlAttributes = new { @class = "form-control", @id = "TenPX", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.PXHenDoiSim, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <select id="IDPX_" class="form-control" onchange="OnGradeChanged_PX(this.value);">
+                    <option value="" selected>Chọn Phường Xã</option>
+                    @{
+                        foreach (var item in ViewBag.list_px)
+                        {
+                            <option value="@item.Ten_PX">@item.Ten_PX</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @Html.Label("Phường xã")
+                </font>
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.TenPhong, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.TenPhong, new { htmlAttributes = new { @class = "form-control", @id = "TENPHONG", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TenPhong, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-3">
+                <select id="tenphong_" class="form-control" onchange="OnGradeChanged_TP(this.value);">
+                    <option value="" selected>Chọn lại Phòng</option>
+                    @{
+                        foreach (var item in ViewBag.list_tp)
+                        {
+                            <option value="@item.TenDonVi">@item.TenDonVi</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @Html.Label("Tên phòng có thể chọn lại")
+                </font>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeUpFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeUpFile, new { htmlAttributes = new { @class = "form-control", @Value = System.DateTime.Now, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TimeUpFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserUpFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserUpFile, new { htmlAttributes = new { @class = "form-control", @Value = user.USERNAME, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserUpFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Timestamps, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Timestamps, new { htmlAttributes = new { @class = "form-control", @Value = System.DateTime.Now, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Timestamps, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    function OnGradeChanged_QH(value) {
+        //Lưu ý url khác nhau theo tình huống
+        //Nếu không gọi được hàm gán địa chỉ cụ thể url: "http://10.10.117.71/DHDoiSim/OutBound/Get_PX"
+        //alert(value);
+        //$("#Nam").val(value);
+        $("#IDPX_").empty();
+        $("#TenQH").val(value);
+        //$('#IDPX_').append('<option value="abc">xyz</option>');
+        //var a = "a,b,c".split(","), i;
+        //for (i = 0; i < a.length; i++) {
+        //    if (a[i].length > 0)
+        //        $('#IDPX_').append('<option value="' + a[i] + '"> ' + a[i] + ' </option>');
+        //}
+        //url: "/DHDoiSim/OutBound/Get_PX",
+        $.ajax({
+            type: "GET",
+            url: "/OutBound/Get_PX",
+            data: { qh: value },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                var a = response.replace("\"", "").replace("\"", "").split(","), i;
+                for (i = 0; i < a.length; i++) {
+                    if (a[i].length > 0)
+                        $('#IDPX_').append('<option value="' + a[i] + '"> ' + a[i] + ' </option>');
+                }
+                //alert(response.responseText);
+                //$('#dialog').show('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+        });
+        //alert(value);
+    }
+    function OnGradeChanged_PX(value) {
+        //$("#Thang").val(value);
+        //alert(value);
+        $("#TenPX").val(value);
+        $("#tenphong_").val("");
+        $.ajax({
+            type: "GET",
+            url: "/OutBound/Get_TenPhong",
+            data: { px: value },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                var a = response.replace("\"", "").replace("\"", "");
+                $('#TENPHONG').val(a);
+                //alert(response.responseText);
+                //$('#dialog').show('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+        });
+    }
+    function OnGradeChanged_TP(value) {
+        $("#TENPHONG").val(value);
+    }
+
+    function OnGradeChanged_IDBaoCao(value) {
+        $("#IDBaoCao").val(value);
+        //alert(value);
+    }
+</script>

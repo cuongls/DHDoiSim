@@ -1,0 +1,154 @@
+﻿@model DHDoiSim.Models.UserList
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Avatar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Birthday)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Seen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Seen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Last_Seen_URL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Last_Seen_URL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Timestamps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Timestamps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoatDong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoatDong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCreate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCreate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMPhong.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMPhong.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMTo.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMTo.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Permission.Permission_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Permission.Permission_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_User }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

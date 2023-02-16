@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b845507c1d041d595ce1131eb0e49d9" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="DoiSimModel.DMDiaBan" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMDonViKT" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMKetQuaThucHien" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMMucUuTien" Width="1.5" PointX="7.5" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMPhong" Width="1.5" PointX="3" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMStatusOBKH" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMStatusSimTrang" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMStatusSuDung" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.DMTo" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.Permission" Width="1.5" PointX="10.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DoiSimModel.TestTable" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DoiSimModel.FK_DMPhong_DMDonViKT" ManuallyRouted="false" />
+        <AssociationConnector Association="DoiSimModel.FK_DMTo_DMPhong" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DoiSimModel.Sim_Trang" Width="1.5" PointX="7.5" PointY="15.375" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Trang_DMDonViKT" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Trang_DMPhong" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Trang_DMStatusSuDung" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Trang_DMTo" />
+        <EntityTypeShape EntityType="DoiSimModel.DMQHPX" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DoiSimModel.Sim_KH" Width="1.5" PointX="3" PointY="5.625" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_KH_DMDonViKT" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_KH_DMKetQuaThucHien" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_KH_DMStatusOBKH" />
+        <EntityTypeShape EntityType="DoiSimModel.ThongKe" Width="1.5" PointX="5.25" PointY="19.75" />
+        <AssociationConnector Association="DoiSimModel.FK_ThongKe_DMPhong" />
+        <EntityTypeShape EntityType="DoiSimModel.ThongBao" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DoiSimModel.UserList" Width="1.5" PointX="12.5" PointY="14.875" />
+        <AssociationConnector Association="DoiSimModel.FK_UserList_DMPhong" />
+        <AssociationConnector Association="DoiSimModel.FK_UserList_DMTo" />
+        <AssociationConnector Association="DoiSimModel.FK_UserList_Permission" />
+        <EntityTypeShape EntityType="DoiSimModel.DMLoaiGiayTo" Width="1.5" PointX="10.5" PointY="4" />
+        <EntityTypeShape EntityType="DoiSimModel.DMLyDoTon" Width="1.5" PointX="9.375" PointY="6.875" />
+        <EntityTypeShape EntityType="DoiSimModel.DMNguongTon" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DoiSimModel.Sim_Phieu" Width="1.5" PointX="14.75" PointY="5.5" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMKetQuaThucHien" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMLoaiGiayTo" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMLyDoTo" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMMucUuTien" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMPhong" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_DMTo" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_Sim_KH" />
+        <EntityTypeShape EntityType="DoiSimModel.DoiSim_DM_ImageUnit" Width="1.5" PointX="11.375" PointY="6.75" />
+        <EntityTypeShape EntityType="DoiSimModel.Sim_Phieu_NhatKyUpdate" Width="1.5" PointX="17" PointY="10.25" />
+        <EntityTypeShape EntityType="DoiSimModel.ThongKeDoiSimThanhCong" Width="1.5" PointX="12.375" PointY="0.75" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" />
+        <EntityTypeShape EntityType="DoiSimModel.Sim_KH_NhatKyUpdate" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DoiSimModel.DMDonViThongKeNSCL" Width="1.5" PointX="17.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DoiSimModel.DMKyThongKeNSCL" Width="1.5" PointX="17.375" PointY="13.75" />
+        <EntityTypeShape EntityType="DoiSimModel.ThongKeNSCL" Width="1.5" PointX="16.375" PointY="0.75" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_KH_NhatKyUpdate_DMStatusOBKH" />
+        <AssociationConnector Association="DoiSimModel.FK_Sim_KH_NhatKyUpdate_Sim_KH" />
+        <EntityTypeShape EntityType="DoiSimModel.ThongKeOutBound" Width="1.5" PointX="17.375" PointY="16.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

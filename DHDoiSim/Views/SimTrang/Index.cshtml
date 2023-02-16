@@ -1,0 +1,158 @@
+﻿@model IEnumerable<DHDoiSim.Models.Sim_Trang>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sim trắng đã cấp</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*ThaiHN thêm*@
+@using (Html.BeginForm("Index", "SimTrang", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-2">
+            Phòng
+        </div>
+
+        <div class="col-md-2">
+            @Html.DropDownList("IDPhong", (IEnumerable<SelectListItem>)ViewData["DSPhong"],
+            new { onchange = "OnNhanKhoaPhieuChange(this.value)" })
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            SerialNumber
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("SN", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Tìm</span>
+            </button>
+        </div>
+
+    </div>
+}
+@*Hết thêm*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.STT)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LoaiHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MenhGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThucCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.BaoHanh)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.NgayBanGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeUpdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserUpdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timestamps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMDonViKT.TenDonVi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMPhong.TenDonVi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMStatusSuDung.StatusName)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.DMTo.TenDonVi)
+        </th>
+        <th></th>*@
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.STT)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.LoaiHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MenhGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThucCap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhTien)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaoHanh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayBanGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeUpdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserUpdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Timestamps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMDonViKT.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMStatusSuDung.StatusName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>*@
+        </tr>
+    }
+
+</table>

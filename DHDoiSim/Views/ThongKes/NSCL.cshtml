@@ -1,0 +1,440 @@
+﻿@model IEnumerable<DHDoiSim.Models.ThongKeNSCL>
+
+@{
+    /**/
+    ViewBag.Title = "Index";
+}
+
+<h2>Thống kê NSCL</h2>
+
+@*<p>
+            @Html.ActionLink("Create New", "Create")
+    </p>*@
+
+@*ThaiHN thêm*@
+@using (Html.BeginForm("NSCL", "ThongKes", FormMethod.Get))
+{
+    @*@Html.Hidden("NguoiGoi", "");*@
+
+    <div class="row">
+        <div class="col-md-2">
+            Chọn thời gian
+        </div>
+
+        <div class="col-md-2">
+            @Html.DropDownList("IDKy", (IEnumerable<SelectListItem>)ViewData["DSKy"],
+            new { onchange = "OnOutBoundChange(this.value)" })
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            Chọn Nhóm
+        </div>
+
+        <div class="col-md-2">
+            @Html.DropDownList("Nhom", (IEnumerable<SelectListItem>)ViewData["DSNhom"],
+            new { onchange = "OnOutBoundChange(this.value)" })
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Xem</span>
+            </button>
+        </div>
+
+    </div>
+}
+@*Hết thêm*@
+
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th style="text-align:center">
+            Xem chi tiết
+        </th>
+        <th style="text-align:center">
+            UserName
+        </th>
+        <th style="text-align:center">
+            Họ tên
+        </th>
+        <th style="text-align:center">
+            Gọi hẹn đổi, KH đồng ý đổi
+        </th>
+
+        <th style="text-align:center">
+            Gọi hẹn đổi và đã đổi thành công
+        </th>
+
+        <th style="text-align:center">
+            Gọi hẹn đổi sim, KH đã tự đổi tại quầy
+        </th>
+        <th style="text-align:center">
+            Thực hiện đổi sim 4G thành công
+        </th>
+        <th style="text-align:center">
+            Tổng điểm
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center">
+            <td>
+                <a href="@Url.Action("NSCL", "ThongKes",  new {IDKy = item.ID_Ky, Nhom = item.MaDonVi, UserName = item.UserName})">
+                    Chi tiết
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GoiHenDoiSim4G_XuatPhieuDoiSim)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GoiHenDoiSim4G_ThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoiHenDoiSim4G_KHDaDoiTaiQuay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThucHienDoiSim4G_ThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongDiem)
+            </td>
+        </tr>
+    }
+    <tr style="background-color:lightsteelblue;text-align:center">
+        <td>
+            Tổng cộng
+        </td>
+
+        <td></td>
+
+        <td></td>
+
+        <td>
+            @ViewBag.GoiHenDoiSim4G_XuatPhieuDoiSim
+        </td>
+
+        <td>
+            @ViewBag.GoiHenDoiSim4G_ThanhCong
+        </td>
+
+        <td>
+            @ViewBag.GoiHenDoiSim4G_KHDaDoiTaiQuay
+        </td>
+
+        <td>
+            @ViewBag.ThucHienDoiSim4G_ThanhCong
+        </td>
+
+        <td>
+
+        </td>
+
+    </tr>
+</table>
+
+<h4>Chi tiết gọi hẹn đổi, KH đồng ý đổi sim</h4>
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th>
+            STT
+        </th>
+        <th>
+            Người gọi
+        </th>
+        <th>
+            Số ĐT
+        </th>
+        <th>
+            Giờ Gọi
+        </th>
+        <th>
+            Giờ hẹn
+        </th>
+        <th>
+            Kết quả thực hiện
+        </th>
+        <th>
+            Địa chỉ hẹn đổi sim
+        </th>
+        <th>
+            Quận huyện hẹn đổi sim
+        </th>
+        <th>
+            Phường xã hẹn đổi sim
+        </th>
+    </tr>
+
+    @{int rowNo = 0;}
+    @foreach (var item in ViewBag.list_GoiHenDoiSim4G_XuatPhieuDoiSim)
+    {
+        <tr>
+            <td>
+                @(rowNo += 1)
+            </td>
+
+            <td>
+                @item.NguoiGoi
+            </td>
+
+            <td>
+                @item.SoDT
+            </td>
+
+            <td>
+                @item.GioGoi
+            </td>
+
+            <td>
+                @item.GioHen
+            </td>
+
+            <td>
+                @item.DMKetQuaThucHien.StatusName
+            </td>
+
+            <td>
+                @item.DiaChiHenDoiSim
+            </td>
+
+            <td>
+                @item.QHHenDoiSim
+            </td>
+
+            <td>
+                @item.PXHenDoiSim
+            </td>
+        </tr>
+    }
+</table>
+
+<h4>Chi tiết gọi hẹn đổi và đã đổi thành công</h4>
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th>
+            STT
+        </th>
+        <th>
+            Người gọi
+        </th>
+        <th>
+            Số ĐT
+        </th>
+        <th>
+            Giờ Gọi
+        </th>
+        <th>
+            Giờ hẹn
+        </th>
+        <th>
+            Kết quả thực hiện
+        </th>
+
+        <th>
+            Địa chỉ hẹn đổi sim
+        </th>
+        <th>
+            Quận huyện hẹn đổi sim
+        </th>
+        <th>
+            Phường xã hẹn đổi sim
+        </th>
+    </tr>
+
+    @{int rowNo2 = 0;}
+    @foreach (var item in ViewBag.list_GoiHenDoiSim4G_ThanhCong)
+    {
+        <tr>
+            <td>
+                @(rowNo2 += 1)
+            </td>
+
+            <td>
+                @item.NguoiGoi
+            </td>
+
+            <td>
+                @item.SoDT
+            </td>
+
+            <td>
+                @item.GioGoi
+            </td>
+
+            <td>
+                @item.GioHen
+            </td>
+
+            <td>
+                @item.DMKetQuaThucHien.StatusName
+            </td>
+
+            <td>
+                @item.DiaChiHenDoiSim
+            </td>
+
+            <td>
+                @item.QHHenDoiSim
+            </td>
+
+            <td>
+                @item.PXHenDoiSim
+            </td>
+        </tr>
+    }
+</table>
+
+
+<h4>Chi tiết Gọi hẹn đổi sim 4G KH đã tự đổi tại quầy</h4>
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th>
+            STT
+        </th>
+        <th>
+            Người gọi
+        </th>
+        <th>
+            Số ĐT
+        </th>
+        <th>
+            Giờ Gọi
+        </th>
+        <th>
+            Giờ hẹn
+        </th>
+        <th>
+            Địa chỉ hẹn đổi sim
+        </th>
+        <th>
+            Quận huyện hẹn đổi sim
+        </th>
+        <th>
+            Phường xã hẹn đổi sim
+        </th>
+    </tr>
+
+    @{int rowNo3 = 0;}
+    @foreach (var item in ViewBag.list_GoiHenDoiSim4G_KHDaDoiTaiQuay)
+    {
+        <tr>
+            <td>
+                @(rowNo3 += 1)
+            </td>
+
+            <td>
+                @item.NguoiGoi
+            </td>
+
+            <td>
+                @item.SoDT
+            </td>
+
+            <td>
+                @item.GioGoi
+            </td>
+
+            <td>
+                @item.GioHen
+            </td>
+
+            <td>
+                @item.DiaChiHenDoiSim
+            </td>
+
+            <td>
+                @item.QHHenDoiSim
+            </td>
+
+            <td>
+                @item.PXHenDoiSim
+            </td>
+        </tr>
+    }
+</table>
+
+<h4>Chi tiết Thực hiện đổi sim 4G thành công</h4>
+<table class="table table-bordered" id="tableData">
+    <tr style="background-color:lightsteelblue;">
+        <th>
+            STT
+        </th>
+        <th>
+            Người đổi sim
+        </th>
+        <th>
+            Số ĐT
+        </th>
+        <th>
+            Ngày đổi sim
+        </th>
+        <th>
+            Ngày ngày khóa phiếu
+        </th>
+        <th>
+            User Khóa phiếu
+        </th>
+        <th>
+            Địa chỉ hẹn đổi sim
+        </th>
+        <th>
+            Quận huyện hẹn đổi sim
+        </th>
+        <th>
+            Phường xã hẹn đổi sim
+        </th>
+    </tr>
+
+    @{int rowNo4 = 0;}
+    @foreach (var item in ViewBag.list_ThucHienDoiSim4G_ThanhCong)
+    {
+        <tr>
+            <td>
+                @(rowNo4 += 1)
+            </td>
+
+            <td>
+                @item.UserThucHien
+            </td>
+
+            <td>
+                @item.SoDT
+            </td>
+
+            <td>
+                @item.DateThucHien
+            </td>
+
+            <td>
+                @item.TimeKhoaPhieu
+            </td>
+
+            <td>
+                @item.UserKhoaPhieu
+            </td>
+
+            <td>
+                @item.DiaChiHenDoiSim
+            </td>
+
+            <td>
+                @item.Ten_QH
+            </td>
+
+            <td>
+                @item.Ten_PX
+            </td>
+        </tr>
+    }
+</table>

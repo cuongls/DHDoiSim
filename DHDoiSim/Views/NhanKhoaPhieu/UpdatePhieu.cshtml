@@ -1,0 +1,72 @@
+﻿@model DHDoiSim.Models.Sim_Phieu
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@*@{
+    ViewBag.Title = "Edit";
+}*@
+<h2>Cập nhật lại Đơn vị thực hiện đổi Sim</h2>
+<h4 style= "color:red">@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="color:green">Mã phiếu: @ViewBag.ID_Sim_Phieu; Số ĐT: @ViewBag.SoDT </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.SoDT)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Sim_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_Sim_KH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.ID_Sim_KH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+ 
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Phong, "ID_Phong", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_Phong", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_Phong, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Đồng ý sửa lại" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function OnGradeChanged_ST(element) {
+        //alert(value);
+        var text = element.options[element.selectedIndex].text;
+        $("#SN").val(text);
+    }
+    function OnGradeChanged_User(value) {
+        $("#USERTHUCHIEN").val(value);
+        //alert(value);
+    }
+
+</script>

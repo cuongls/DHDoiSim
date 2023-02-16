@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "NhapTheoDaiSerial";
+}
+
+<h2>Nhập theo dải Serial</h2>
+<h4>ID Sim phiếu @ViewBag.ID_Sim_Phieu</h4>
+@using (Html.BeginForm("NhapTheoDaiSerial", "NhapSimTrang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-horizontal">
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Ngày bàn giao (*)")<br />
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("NgayBanGiao", "", new { type = "date" }) <br />
+        </div>
+
+    </div>
+
+    @*<div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Loại hàng (*)")
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("LoaiHang", "", new { type = "string" }) <br />
+        </div>
+    </div>*@
+
+    @*<div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Mệnh giá (*)")
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("MenhGia", "", new { type = "int" }) <br />
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Serial number đầu (*)")<br />
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("SNDau", "", new { type = "int" }) <br />
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Serial number cuối (*)")<br />
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("SNCuoi", "", new { type = "int" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-3">
+            @Html.Label("Ghi chú")<br />
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("GhiChu", "", new { type = "string" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+    <font style="color:red">@ViewBag.Message</font>
+</div>
+}

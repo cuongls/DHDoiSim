@@ -1,0 +1,391 @@
+﻿@model IEnumerable<DHDoiSim.Models.Sim_Phieu>
+@*@model PagedList.IPagedList<DHDoiSim.Models.Sim_Phieu>
+    @using PagedList.Mvc;*@
+
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Phiếu đổi sim đã xuất</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*ThaiHN thêm*@
+@using (Html.BeginForm("TraCuu", "NhanKhoaPhieu", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-md-2">
+            Phòng
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("IDPhong", (IEnumerable<SelectListItem>)ViewData["DSPhong"],
+            new { onchange = "OnNhanKhoaPhieuChange(this.value)" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            Kết quả thực hiện
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("IDKetQuaThucHien", (IEnumerable<SelectListItem>)ViewData["DSKQTH"],
+            new { onchange = "OnNhanKhoaPhieuChange(this.value)" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            Ngưỡng tồn
+        </div>
+        <div class="col-md-2">
+            @Html.DropDownList("NguongTon", (IEnumerable<SelectListItem>)ViewData["DSNguongTon"],
+            new { onchange = "OnNhanKhoaPhieuChange(this.value)" })
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Từ ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("TuNgay", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-2">
+            Đến ngày khóa phiếu (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("DenNgay", "", new { style = "color:red" })
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Số Điện thoại
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("SoDT", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Tìm</span>
+            </button>
+        </div>
+
+    </div>
+}
+@*Hết thêm*@
+<table class="table">
+    <tr>
+        <th>STT</th>
+
+        <th>
+            Chuyển Phòng
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </th>
+
+        <th>
+            Ghi chú OutBound
+            @*@Html.DisplayNameFor(model => model.GhiChu)*@
+        </th>
+
+        <th>
+            Ghi chú Xuất phiếu
+            @*@Html.DisplayNameFor(model => model.GhiChu)*@
+        </th>
+        <th>
+            Kết quả thực hiện
+            @*@Html.DisplayNameFor(model => model.DMKetQuaThucHien.StatusName)*@
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DMLyDoTon.LyDoTon)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungNhapTon)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.GioHen)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NgayHenMoi)
+        </th>
+
+        <th>
+            Tên Phòng
+            @*@Html.DisplayNameFor(model => model.DMPhong.TenDonVi)*@
+        </th>
+        <th>
+            Tên Tổ
+            @*@Html.DisplayNameFor(model => model.DMTo.TenDonVi)*@
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TimeXP)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TimeKhoaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserKhoaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungKhoaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungThucHien)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungXP)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Ten_QH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten_PX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiHenDoiSim)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiTB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungChiaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeCapNhatKetQuaThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_CMT_Truoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_CMT_Sau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_BienBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_CamKetKhongCC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMMucUuTien.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMLoaiGiayTo.LoaiGiayTo)
+        </th>
+
+    </tr>
+
+    @{int rowNo = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(rowNo += 1)
+            </td>
+
+            <td>
+                @if (@item.ID_KetQuaThucHien == 2)
+                {
+                    <a href="/NhanKhoaPhieu/UpdatePhieu/@item.ID " class="btn btn-primary" title="Cập nhật thông tin XP">
+                        <span class="glyphicon-comment"></span>
+                    </a>
+                }
+            </td>
+
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.SoDT)
+                </font>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Sim_KH.GhiChu)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMKetQuaThucHien.StatusName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DMLyDoTon.LyDoTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungNhapTon)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.GioHen)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayHenMoi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeXP)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeKhoaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserKhoaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungKhoaPhieu)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungThucHien)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserXP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungXP)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten_QH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten_PX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiHenDoiSim)
+            </td>
+
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+                </td>*@
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiTB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungChiaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeCapNhatKetQuaThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_CMT_Truoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_CMT_Sau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_BienBan)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_CamKetKhongCC)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMMucUuTien.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMLoaiGiayTo.LoaiGiayTo)
+            </td>
+
+        </tr>
+    }
+
+</table>
+@*ThaiHN thêm*@
+@*<div id='Paging' style="text-align:center">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+        of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, Ten_QH = ViewBag.Ten_QH, Ten_Phong = ViewBag.Ten_Phong, ID_StatusOB = ViewBag.ID_StatusOB, ID_KetQuaThucHien = ViewBag.ID_KetQuaThucHien, NguoiGoi = ViewBag.NguoiGoi }))
+    </div>*@
+@*Hết thêm*@

@@ -1,0 +1,90 @@
+﻿@model DHDoiSim.Models.ThongKe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ThongKe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DoiSimThanhCong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoiSimThanhCong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoSimTrangDaCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoSimTrangDaCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoiSimKhongThanhCong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoiSimKhongThanhCong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChuaCoKetQua)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChuaCoKetQua)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TongSoPhieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TongSoPhieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TyLeDoiSimThanhCong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TyLeDoiSimThanhCong)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayBC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayBC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGioTaoBaoCao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGioTaoBaoCao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMPhong.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMPhong.TenDonVi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
