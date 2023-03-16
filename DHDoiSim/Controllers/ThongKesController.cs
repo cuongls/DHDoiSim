@@ -64,6 +64,41 @@ namespace DHDoiSim.Controllers
             var thongKes = db.ThongKes.Include(t => t.DMPhong);
             return View(thongKes.ToList());
         }
+        public ActionResult ChiTietDonVi(string tungay, string denngay, int? idphong)
+        {
+            if (Session[UserSession.ISLOGIN] == null || !(bool)Session[UserSession.ISLOGIN])
+                return RedirectToAction("Index", "Login");
+
+            //if (user.PERMISSION > 8)
+            //    return RedirectToAction("Index", "Login");
+
+            Model.UpdateLastLogin();
+            Model.UpdateLastSeen("Chi Tiết Đơn Vị", Url.Action("ChiTietDonVi"));
+
+            //DMPhong
+            List<SelectListItem> list = new List<SelectListItem>();
+            var lstPhong = db.DMPhongs.ToList();
+            for (int i = 0; i < lstPhong.Count(); i++)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = lstPhong[i].TenDonVi.ToString(),
+                    Value = lstPhong[i].ID.ToString(),
+                });
+            }
+            ViewData["DSPhong"] = list;
+
+            var data = db.SP_ThongKeChiTietDonVi(idphong, tungay, denngay);
+
+            ViewBag.TongSoPhieu = db.ThongKeChiTietDonVis.Sum(x => x.TongSoPhieu);
+            ViewBag.DoiSimThanhCong = db.ThongKeChiTietDonVis.Sum(x => x.DoiSimThanhCong);
+            ViewBag.DoiSimKhongThanhCong = db.ThongKeChiTietDonVis.Sum(x => x.DoiSimKhongThanhCong);
+            ViewBag.ChuaCoKetQua = db.ThongKeChiTietDonVis.Sum(x => x.ChuaCoKetQua);
+            ViewBag.TyLeDoiSimThanhCong = ViewBag.TongSoPhieu > 0 ? Math.Round(Convert.ToDecimal(ViewBag.DoiSimThanhCong * 100 / ViewBag.TongSoPhieu),2) : 0;
+            ViewBag.PhieuTonQua2Ngay = db.ThongKeChiTietDonVis.Sum(x => x.PhieuTonQua2Ngay);
+            var thongke = db.ThongKeChiTietDonVis.OrderBy(x => x.IDTo);
+            return View(thongke.ToList());
+        }
 
         public ActionResult NSCL(string IDKy, string Nhom, string UserName)
         {
@@ -157,7 +192,7 @@ namespace DHDoiSim.Controllers
             ViewBag.list_GoiHenDoiSim4G_KHDaDoiTaiQuay = list_tk3; 
 
             //
-            var list_tk4 = db.Sim_Phieu.Where(x => x.UserThucHien == UserName);
+            var list_tk4 = db.Sim_Phieu.Where(x => x.UserThucHien == UserName && x.ID_KetQuaThucHien == 3);
             if (String.IsNullOrEmpty(UserName) || String.IsNullOrEmpty(IDKy))
             {
                 list_tk4 = list_tk4.Where(x => x.ID < 1);
@@ -215,7 +250,6 @@ namespace DHDoiSim.Controllers
             var thongKeOutBound = db.ThongKeOutBounds;
             return View(thongKeOutBound.ToList().OrderBy(x=>x.MaDonVi).ThenBy(y => y.UserName));
         }
-
         // GET: ThongKes/Details/5
         public ActionResult Details(int? id)
         {

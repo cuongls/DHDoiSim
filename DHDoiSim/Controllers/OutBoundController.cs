@@ -28,7 +28,7 @@ namespace DHDoiSim.Controllers
         //    return View(sim_KH.ToList());
         //}
 
-        public ActionResult Index(int? page, int? pageSize, string Ten_QH,string Ten_Phong, string ID_StatusOB, string ID_KetQuaThucHien, string NguoiGoi, string SoDT)
+        public ActionResult Index(int? page, int? pageSize, string Ten_QH,string Ten_Phong, string ID_StatusOB, string ID_KetQuaThucHien, string NguoiGoi, string SoDT, int? isSendSMS, int? TapKH)
         {
             //ThaiHN thêm
             if (Session[UserSession.ISLOGIN] == null || !(bool)Session[UserSession.ISLOGIN])
@@ -78,6 +78,9 @@ namespace DHDoiSim.Controllers
             ViewBag.ID_StatusOB = ID_StatusOB ?? "all";
             ViewBag.ID_KetQuaThucHien = ID_KetQuaThucHien ?? "all";
             ViewBag.NguoiGoi = NguoiGoi ?? "all";
+            ViewBag.SoDT = SoDT ?? "";
+            ViewBag.isSendSMS = isSendSMS ?? 1;
+            ViewBag.TapKH = TapKH ?? 1;
 
             List<SelectListItem> list2 = new List<SelectListItem>();
 
@@ -183,7 +186,25 @@ namespace DHDoiSim.Controllers
 
             if (String.IsNullOrEmpty(Ten_QH) && String.IsNullOrEmpty(ID_StatusOB) && String.IsNullOrEmpty(ID_KetQuaThucHien) && String.IsNullOrEmpty(NguoiGoi) && String.IsNullOrEmpty(SoDT))
                 sim_KHs = sim_KHs.Where(s => s.ID == -1);
-
+            if(isSendSMS == 1) {
+                sim_KHs = sim_KHs.Where(x => x.isSendSMS == 1);
+            }
+            else
+            {
+                sim_KHs = sim_KHs.Where(x => x.isSendSMS != 1);
+            }
+            if (TapKH == 1)
+            {
+                sim_KHs = sim_KHs.Where(x => x.ID_DonViKT == 1);
+            }
+            if (TapKH == 2)
+            {
+                sim_KHs = sim_KHs.Where(x => x.ID_DonViKT == 2);
+            }
+            if (TapKH == 0)
+            {
+                sim_KHs = sim_KHs.Where(x => x.ID_DonViKT != 1 && x.ID_DonViKT != 2);
+            }
             simkh = sim_KHs.OrderByDescending(s => s.Ten_QH).ToPagedList(pageIndex, pageSize ?? 50);
             return View(simkh);
 
@@ -694,14 +715,37 @@ namespace DHDoiSim.Controllers
             }
             return Json(ds_px, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult Get_TenPhong(string px)
+        public JsonResult Get_DiaBan(string px)
+        {
+            string ds_px = "";
+            List<string> ds_px_ = new List<string>();
+            foreach (var item in db.DMDiaBans.Where(x => x.TenPX == px).ToList())
+            {
+                ds_px += item.TenDiaBan + ",";
+                ds_px_.Add(item.TenDiaBan);
+            }
+            return Json(ds_px, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Get_TenPhong(string px, int tapkh)
         {
             string tenphong = "";
-            tenphong = db.DMQHPXes.First(x => x.Ten_PX == px).TenPhong;
+            if(tapkh != 2)
+            {
+                tenphong = db.DMQHPXes.First(x => x.Ten_PX == px).TenPhong;
+            }
+            else
+            {
+                tenphong = db.DMQHPXes.First(x => x.Ten_PX == px).TTVT;
+            }
+            
             return Json(tenphong, JsonRequestBehavior.AllowGet);
         }
-
+        public JsonResult Get_TenDiaBan(string px)
+        {
+            string tenphong = "";
+            tenphong = db.DMDiaBans.First(x => x.TenDiaBan == px).TenDiaBan;
+            return Json(tenphong, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult EditOutBound(int? id)
         {
             //ThaiHN thêm
@@ -728,16 +772,19 @@ namespace DHDoiSim.Controllers
 
             ViewBag.list_qh = db.DMQHPXes.GroupBy(x => x.Ten_QH).Select(g => g.FirstOrDefault());
             ViewBag.list_px = db.DMQHPXes.Distinct().GroupBy(x => x.Ten_PX).Select(g => g.FirstOrDefault());
+            ViewBag.list_diaban = db.DMDiaBans.OrderBy(x => x.TenDiaBan).ToList();
             ViewBag.QH = sim_KH.QHHenDoiSim;
             ViewBag.PX = sim_KH.PXHenDoiSim;
+            ViewBag.DiaBan = sim_KH.DiaBanHenDoiSim;
             ViewBag.SoDT_ = sim_KH.SoDT;
+            ViewBag.TapKH = sim_KH.ID_DonViKT;
             //Hết thêm
             return View(sim_KH);
         }
         //ThaiHN thêm
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditOutBound([Bind(Include = "ID,SoDT,Loai_TB,BTS_Name,Code,Model,Dia_Chi_BTS,Don_Vi,TTVT,Dia_Chi_BTS2,Phuong_Xa_ID,Quan_Huyen_ID,Ve_Tinh_ID,TenPhong,Ten_TT,Ten_QH,Ten_PX,Doi_ID,Ten_Doi,TT_ID,TimeUpFile,UserUpFile,Timestamps,ID_DonViKT,ID_StatusOBKH,NguoiGoi,GioGoi,GioHen,DiaChiHenDoiSim,GhiChu,ID_KetQuaThucHien,LyDoPhanDiaBan,TieuChi,GhiChu1,GhiChu2,GhiChu3,QHHenDoiSim,PXHenDoiSim")] Sim_KH sim_KH)
+        public ActionResult EditOutBound([Bind(Include = "ID,SoDT,Loai_TB,BTS_Name,Code,Model,Dia_Chi_BTS,Don_Vi,TTVT,Dia_Chi_BTS2,Phuong_Xa_ID,Quan_Huyen_ID,Ve_Tinh_ID,TenPhong,Ten_TT,Ten_QH,Ten_PX,Doi_ID,Ten_Doi,TT_ID,TimeUpFile,UserUpFile,Timestamps,ID_DonViKT,ID_StatusOBKH,NguoiGoi,GioGoi,GioHen,DiaChiHenDoiSim,GhiChu,ID_KetQuaThucHien,LyDoPhanDiaBan,TieuChi,GhiChu1,GhiChu2,GhiChu3,QHHenDoiSim,PXHenDoiSim,DiaBanHenDoiSim")] Sim_KH sim_KH)
         {
             //Chưa cập nhật KQ thực hiện
             if (ModelState.IsValid)
@@ -753,6 +800,7 @@ namespace DHDoiSim.Controllers
                 update.PXHenDoiSim = sim_KH.PXHenDoiSim;
                 update.TenPhong = sim_KH.TenPhong;
                 update.GhiChu = sim_KH.GhiChu;
+                update.DiaBanHenDoiSim = sim_KH.DiaBanHenDoiSim;
                 db.SaveChanges();
                 //Insert Sim_KH_NhatKyUpdate
                 var simkh_nkupd = new Sim_KH_NhatKyUpdate();

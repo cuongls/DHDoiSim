@@ -34,9 +34,12 @@ namespace DHDoiSim.Models
         public string UserCreate { get; set; }
         public string MaDonVi { get; set; }
         public string GhiChu { get; set; }
+        public Nullable<int> ID_Nhom { get; set; }
+        public string MaNhanVien { get; set; }
     
         public virtual DMPhong DMPhong { get; set; }
         public virtual DMTo DMTo { get; set; }
         public virtual Permission Permission { get; set; }
+        public virtual DMNhomDiaBan DMNhomDiaBan { get; set; }
     }
 }

@@ -106,5 +106,61 @@ namespace DHDoiSim.Controllers
                 return View();
             }
         }
+        public ActionResult NhapSimTrang()
+        {
+            if (Session[UserSession.ISLOGIN] == null || !(bool)Session[UserSession.ISLOGIN])
+                return RedirectToAction("Index", "Login");
+
+            if (user.PERMISSION > 6)
+                return RedirectToAction("Index", "Login");
+            //DMPhong
+            List<SelectListItem> list = new List<SelectListItem>();
+            var lstPhong = db.DMPhongs.ToList();
+            for (int i = 0; i < lstPhong.Count(); i++)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = lstPhong[i].TenDonVi.ToString(),
+                    Value = lstPhong[i].ID.ToString(),
+                });
+            }
+            ViewData["DSPhong"] = list;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult NhapSimTrang(DateTime NgayBanGiao, int IdPhong, int SoLuong, string GhiChu)
+        {
+            if (NgayBanGiao == null)
+            {
+                ViewBag.Message = "Chưa nhập ngày bàn giao!";
+                return View();
+            }
+            //DMPhong
+            List<SelectListItem> list = new List<SelectListItem>();
+            var lstPhong = db.DMPhongs.ToList();
+            for (int i = 0; i < lstPhong.Count(); i++)
+            {
+                list.Add(new SelectListItem
+                {
+                    Text = lstPhong[i].TenDonVi.ToString(),
+                    Value = lstPhong[i].ID.ToString(),
+                });
+            }
+            ViewData["DSPhong"] = list;
+            var simtrang = new Sim_Trang();
+            simtrang.NgayBanGiao = NgayBanGiao;
+            simtrang.GhiChu = GhiChu;
+            simtrang.ID_Phong = IdPhong;
+            simtrang.UserUpdate = user.USERNAME;
+            simtrang.TimeUpdate = System.DateTime.Now;
+            simtrang.Timestamps = System.DateTime.Now;
+            simtrang.SoLuong = SoLuong;
+            simtrang.LoaiDuLieu = "SOLUONG";
+            db.Sim_Trang.Add(simtrang);
+            db.SaveChanges();
+            @ViewBag.Message = "Cập nhật thành công!!!!!";
+
+            return View();
+        }
     }
 }

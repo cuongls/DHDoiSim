@@ -1,0 +1,146 @@
+﻿@model DHDoiSim.Models.Sim_Trang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sim_Trang</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.STT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.STT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoaiHang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoaiHang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenhGia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenhGia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThucCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThucCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhTien)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaoHanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaoHanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayBanGiao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayBanGiao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeUpdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeUpdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserUpdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserUpdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Timestamps)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Timestamps)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMDonViKT.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMDonViKT.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMPhong.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMPhong.TenDonVi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMStatusSuDung.StatusName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMStatusSuDung.StatusName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DMTo.TenDonVi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DMTo.TenDonVi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

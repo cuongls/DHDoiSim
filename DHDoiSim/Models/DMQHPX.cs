@@ -19,5 +19,6 @@ namespace DHDoiSim.Models
         public string Ten_PX { get; set; }
         public Nullable<int> ID_Phong { get; set; }
         public string TenPhong { get; set; }
+        public string TTVT { get; set; }
     }
 }

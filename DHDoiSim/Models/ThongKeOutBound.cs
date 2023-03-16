@@ -23,5 +23,23 @@ namespace DHDoiSim.Models
         public Nullable<System.DateTime> TuNgay { get; set; }
         public Nullable<System.DateTime> DenNgay { get; set; }
         public Nullable<int> PhieuDaXuat { get; set; }
+        public Nullable<int> TongCuocGoi { get; set; }
+        public Nullable<int> ThanhCong { get; set; }
+        public Nullable<int> KhongThanhCong { get; set; }
+        public Nullable<int> DaDoi { get; set; }
+        public Nullable<int> DangGoi { get; set; }
+        public Nullable<int> KHDongYDS { get; set; }
+        public Nullable<int> KHKhongDYDS { get; set; }
+        public Nullable<int> DaGoiChuaCoKQ { get; set; }
+        public Nullable<int> KhongLLDuoc { get; set; }
+        public Nullable<int> KHTuDS { get; set; }
+        public Nullable<int> KHChuyenTinh { get; set; }
+        public Nullable<int> KHDaDS { get; set; }
+        public Nullable<int> PVT { get; set; }
+        public Nullable<int> PHT { get; set; }
+        public Nullable<int> PKT { get; set; }
+        public Nullable<int> PKTHT { get; set; }
+        public Nullable<int> PVIP { get; set; }
+        public Nullable<int> PTH { get; set; }
     }
 }

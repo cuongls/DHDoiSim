@@ -24,6 +24,9 @@ namespace DHDoiSim.Models
         public Nullable<double> TyLeDoiSimThanhCong { get; set; }
         public Nullable<System.DateTime> NgayBC { get; set; }
         public Nullable<System.DateTime> NgayGioTaoBaoCao { get; set; }
+        public string TenPhong { get; set; }
+        public Nullable<int> TongPhieuTinhLyLe { get; set; }
+        public Nullable<int> SoSimDoiNgoaiDanhSach { get; set; }
     
         public virtual DMPhong DMPhong { get; set; }
     }

@@ -16,6 +16,7 @@ namespace DHDoiSim.Common
         public string NAME { get; set; }
         public int ID_PHONG { get; set; }
         public int ID_TO { get; set; }
+        public int ID_Nhom { get; set; }
 
         public User ()
         {
@@ -30,6 +31,7 @@ namespace DHDoiSim.Common
                 NAME = (string)HttpContext.Current.Session[UserSession.NAME];
                 ID_PHONG = (int)HttpContext.Current.Session[UserSession.ID_PHONG];
                 ID_TO = (int)HttpContext.Current.Session[UserSession.ID_TO];
+                ID_Nhom = (int)HttpContext.Current.Session[UserSession.ID_Nhom];
             }
             catch (Exception) { }
         }

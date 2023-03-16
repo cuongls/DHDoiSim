@@ -20,6 +20,7 @@ namespace DHDoiSim.Models
             this.Sim_Trang = new HashSet<Sim_Trang>();
             this.UserLists = new HashSet<UserList>();
             this.Sim_Phieu = new HashSet<Sim_Phieu>();
+            this.DMNhomDiaBans = new HashSet<DMNhomDiaBan>();
         }
     
         public int ID { get; set; }
@@ -34,5 +35,7 @@ namespace DHDoiSim.Models
         public virtual ICollection<UserList> UserLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sim_Phieu> Sim_Phieu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DMNhomDiaBan> DMNhomDiaBans { get; set; }
     }
 }

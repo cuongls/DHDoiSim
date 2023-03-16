@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "NhapSimTrang";
+}
+
+<h2>Nhập số lượng sim trắng bàn giao cho các đơn vị</h2>
+@using (Html.BeginForm("NhapSimTrang", "NhapSimTrang", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-horizontal">
+
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.Label("Ngày bàn giao (*)")<br />
+        </div>
+
+        <div class="col-md-6">
+            @Html.TextBox("NgayBanGiao", "", new { type = "date" }) <br />
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.Label("Đơn vị (*)")<br />
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownList("IDPhong", (IEnumerable<SelectListItem>)ViewData["DSPhong"])
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.Label("Số lượng (*)")<br />
+        </div>
+
+        <div class="col-md-3">
+            @Html.TextBox("SoLuong", "", new { type = "int" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            @Html.Label("Ghi chú")<br />
+        </div>
+
+        <div class="col-md-9">
+            @Html.TextBox("GhiChu", "", new { type = "string" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+    <font style="color:red">@ViewBag.Message</font>
+</div>
+}
+

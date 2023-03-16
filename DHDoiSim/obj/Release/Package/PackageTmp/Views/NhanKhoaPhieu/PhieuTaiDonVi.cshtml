@@ -1,0 +1,241 @@
+﻿@model IEnumerable<DHDoiSim.Models.Sim_Phieu>
+
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Thống kê phiếu tại đơn vị</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*ThaiHN thêm*@
+@using (Html.BeginForm("PhieuTaiDonVi", "NhanKhoaPhieu", FormMethod.Get))
+{
+<div class="row">
+    <div class="col-md-2">
+        Tổ/Đội VT
+    </div>
+    <div class="col-md-2">
+        @Html.DropDownList("IDTo", (IEnumerable<SelectListItem>)ViewData["DSTo"])
+    </div>
+    <div class="col-md-2">
+        Trạng thái phiếu
+    </div>
+    <div class="col-md-2">
+        @Html.DropDownList("trangthaiphieu", (IEnumerable<SelectListItem>)ViewData["DSTrangThaiPhieu"])
+    </div>
+</div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Từ ngày(m/d/yyyy)
+        </div>
+
+        <div class="col-md-2 TuNgay">
+            @Html.TextBox("TuNgay", null, new { @class = "input-small" })
+
+        </div>
+
+        <div class="col-md-2">
+            Đến ngày (m/d/yyyy)
+        </div>
+
+        <div class="col-md-2 DenNgay">
+            @Html.TextBox("DenNgay", null, new { @class = "input-small" })
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-2">
+            Số Điện thoại
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("SoDT", "", new { style = "color:red" })
+        </div>
+        <div class="col-md-2">
+            Người thực hiện
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("userName", "", new { style = "color:red" })
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Tìm</span>
+            </button>
+        </div>
+        <input type="button" id="btnExport" value="Xuất file Excel" />
+    </div>
+}
+@*Hết thêm*@
+<table class="table" id="tblCustomers">
+    <tr>
+        <th>STT</th>
+
+        <th>
+            Tên Phòng
+            @*@Html.DisplayNameFor(model => model.DMPhong.TenDonVi)*@
+        </th>
+        <th>
+            Tên Tổ
+            @*@Html.DisplayNameFor(model => model.DMTo.TenDonVi)*@
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </th>
+        <th>
+            Người XP
+        </th>
+        <th>
+            Ngày XP
+        </th>
+        <th>
+            Người nhận
+        </th>
+        <th>
+            Ngày hẹn
+        </th>
+        <th>
+            Địa chỉ hẹn
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserThucHien)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DateThucHien)
+        </th>
+        <th>
+            Seri Sim
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeKhoaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserKhoaPhieu)
+        </th>
+    </tr>
+
+    @{int rowNo = 0;}
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @(rowNo += 1)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+        </td>
+
+        <td>
+            <font color="#FF0000">
+                @Html.DisplayFor(modelItem => item.SoDT)
+            </font>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserXP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeXP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserNhanPhieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GioHen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChiHenDoiSim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserThucHien)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DateThucHien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SerialNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeKhoaPhieu)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.UserKhoaPhieu)
+        </td>
+    </tr>
+    }
+
+</table>
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+@section Scripts{
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script src="~/Scripts/jquery.table2excel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.TuNgay input').datetimepicker(
+                {
+                    format: 'm/d/Y',
+                    //value: new Date()
+                }
+            );
+        });
+        $(document).ready(function () {
+            $('.DenNgay input').datetimepicker(
+                {
+                    format: 'm/d/Y',
+                    //value: new Date()
+                }
+            );
+        });
+        $("#btnExport").click(function () {
+            $("#tblCustomers").table2excel({
+                filename: "Table.xls"
+            });
+        });
+        function capnhatphieu(id) {
+            $.ajax({
+                type: "GET",
+                url: "/NhanKhoaPhieu/CapNhatBienBan",
+                data: { id: id },
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    alert(response);
+                    //$('#dialog').show('open');
+                },
+                failure: function (response) {
+                    //alert(response.responseText);
+                },
+                error: function (response) {
+                    //alert(response.responseText);
+                }
+            });
+        };
+        function getFormattedDate(date) {
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear().toString().slice(2);
+            return day + '-' + month + '-' + year;
+        }
+    </script>
+}
+

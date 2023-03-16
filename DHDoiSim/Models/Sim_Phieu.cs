@@ -70,6 +70,13 @@ namespace DHDoiSim.Models
         public string GhiChu11 { get; set; }
         public Nullable<System.DateTime> NgayHenMoi { get; set; }
         public string CCCD_KhachHang { get; set; }
+        public Nullable<int> ID_Nhom { get; set; }
+        public string UserNameThucHien { get; set; }
+        public string MaNhanVienThucHien { get; set; }
+        public Nullable<System.DateTime> TimeNhapBoSung { get; set; }
+        public string UserNhapBoSung { get; set; }
+        public string DiaBanHenDoiSim { get; set; }
+        public Nullable<int> DoiSoatBienBan { get; set; }
     
         public virtual DMKetQuaThucHien DMKetQuaThucHien { get; set; }
         public virtual DMLoaiGiayTo DMLoaiGiayTo { get; set; }

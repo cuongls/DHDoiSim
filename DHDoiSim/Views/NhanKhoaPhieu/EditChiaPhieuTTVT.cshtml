@@ -1,0 +1,154 @@
+﻿@model DHDoiSim.Models.Sim_Phieu
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@*@{
+        ViewBag.Title = "Edit";
+    }*@
+<h2>Chia phiếu đến địa bàn</h2>
+<h4>@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4 style="color:green">Mã phiếu: @ViewBag.ID_Sim_Phieu; Số ĐT: @ViewBag.SoDT </h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserChiaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserChiaPhieu, new { htmlAttributes = new { @class = "form-control", @Value = user.USERNAME, @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.UserChiaPhieu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ten_QH, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Ten_QH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Ten_QH, "", new { @class = "text-danger" })
+        </div>
+        @Html.LabelFor(model => model.Ten_PX, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.Ten_PX, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.Ten_PX, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.DiaChiHenDoiSim, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DiaChiHenDoiSim, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.TimeChiaPhieu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ID_Phong, "Phòng/ TTVT", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ID_Phong", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.ID_Phong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.ID_To, "Tổ/Đội VT", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("ID_To", null, htmlAttributes: new { @class = "form-control", @onchange = "OnGradeChanged_Phong(this.value);" })
+            @Html.ValidationMessageFor(model => model.ID_To, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.UserNhanPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-4">
+            @Html.EditorFor(model => model.UserNhanPhieu, new { htmlAttributes = new { @class = "form-control", @id = "UserNhanPhieu", @Value = ViewBag.UserNhanPhieu } })
+            @Html.ValidationMessageFor(model => model.UserNhanPhieu, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-md-3">
+            <font color="#FF0000">
+                <select id="UserNhanPhieu_" class="form-control" onchange="OnGradeChanged_UserNhanPhieu(this.value);">
+                    <option value="" selected>Không chọn</option>
+                    @{
+                        foreach (var item in ViewBag.list_user)
+                        {
+                            <option value="@item.UserName">@item.Name - @item.UserName</option>
+                        }
+                    }
+                </select>
+            </font>
+        </div>
+        <div class="col-md-3">
+            <font color="#FF0000">
+                Chọn người nhận phiếu
+            </font>
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NoiDungChiaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NoiDungChiaPhieu, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NoiDungChiaPhieu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function OnGradeChanged_ST(element) {
+        //alert(value);
+        var text = element.options[element.selectedIndex].text;
+        $("#SN").val(text);
+    }
+    function OnGradeChanged_User(value) {
+        $("#USERTHUCHIEN").val(value);
+        //alert(value);
+    }
+    function OnGradeChanged_Phong(value) {
+        
+        $.ajax({
+            type: "GET",
+            url: "/NhanKhoaPhieu/Get_UserByTo",
+            data: { to: value },
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                var a = response.replace("\"", "").replace("\"", "").split(","), i;
+                if (a.length > 1) {
+                    console.log(a);
+                    $("#UserNhanPhieu_").empty();
+                    for (i = 0; i < a.length; i++) {
+                        if (a[i].length > 0)
+                            $('#UserNhanPhieu_').append('<option value="' + a[i].split("-")[0] + '"> ' + a[i] + ' </option>');
+                    }
+                }
+                
+                //alert(response.responseText);
+                //$('#dialog').show('open');
+            },
+            failure: function (response) {
+                //alert(response.responseText);
+            },
+            error: function (response) {
+                //alert(response.responseText);
+            }
+        });
+    }
+    function OnGradeChanged_UserNhanPhieu(value) {
+        $("#UserNhanPhieu").val(value);
+
+    }
+</script>

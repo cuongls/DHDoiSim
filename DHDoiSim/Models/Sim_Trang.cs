@@ -31,6 +31,8 @@ namespace DHDoiSim.Models
         public Nullable<System.DateTime> Timestamps { get; set; }
         public Nullable<int> ID_StatusSuDung { get; set; }
         public Nullable<int> ID_DonViKT { get; set; }
+        public Nullable<int> SoLuong { get; set; }
+        public string LoaiDuLieu { get; set; }
     
         public virtual DMDonViKT DMDonViKT { get; set; }
         public virtual DMPhong DMPhong { get; set; }

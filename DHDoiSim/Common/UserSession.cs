@@ -16,5 +16,6 @@ namespace DHDoiSim.Common
         public static string NAME = "NAME";
         public static string ID_PHONG = "ID_PHONG";
         public static string ID_TO = "ID_TO";
+        public static string ID_Nhom = "ID_NHOM";
     }
 }

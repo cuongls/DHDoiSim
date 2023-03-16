@@ -87,6 +87,7 @@ namespace DHDoiSim.Models
             HttpContext.Current.Session.Add(Common.UserSession.NAME, user.Name);
             HttpContext.Current.Session.Add(Common.UserSession.ID_PHONG, user.ID_Phong);
             HttpContext.Current.Session.Add(Common.UserSession.ID_TO, user.ID_To);
+            HttpContext.Current.Session.Add(Common.UserSession.ID_Nhom, user.ID_Nhom);
         }
     }
 }

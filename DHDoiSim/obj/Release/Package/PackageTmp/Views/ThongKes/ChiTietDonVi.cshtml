@@ -1,0 +1,151 @@
+﻿@model IEnumerable<DHDoiSim.Models.ThongKeChiTietDonVi>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Báo cáo chi tiết kết quả đổi sim 4G</h2>
+
+@*<p>
+            @Html.ActionLink("Create New", "Create")
+    </p>*@
+@using (Html.BeginForm("ChiTietDonVi", "ThongKes", FormMethod.Get))
+{
+<div class="row">
+    <div class="col-md-1">
+        Từ ngày
+    </div>
+
+    <div class="col-md-2 TuNgay">
+        @Html.TextBox("tungay", null, new { @class = "input-small" })
+
+    </div>
+    <div class="col-md-1">
+        Đến ngày
+    </div>
+
+    <div class="col-md-2 TuNgay">
+        @Html.TextBox("denngay", null, new { @class = "input-small" })
+
+    </div>
+    <div class="col-md-1">
+        Phòng
+    </div>
+    <div class="col-md-2">
+        @Html.DropDownList("IDPhong", (IEnumerable<SelectListItem>)ViewData["DSPhong"])
+    </div>
+
+
+    <div class="col-md-1">
+        <button type="submit" class="btn btn-info">
+            <span class="glyphicon glyphicon-search"></span>
+            <span class="submit-text">&nbsp;&nbsp;Xem</span>
+        </button>
+    </div>
+    <div class="col-md-1">
+        <input type="button" id="btnExport" value="Xuất file Excel" />
+    </div>
+</div>
+}
+
+<table class="table table-bordered" id="tblCustomers">
+    <tr style="background-color:lightsteelblue;">
+        <th style="text-align:center; width: 300px;">
+            Tên đơn vị
+        </th>
+        <th style="text-align:center">
+            Tổng số đổi thành công
+        </th>
+        <th style="text-align:center">
+            Đổi sim không thành công
+        </th>
+
+        <th style="text-align:center">
+            Chưa có kết quả
+        </th>
+        <th style="text-align:center">
+            Tổng số phiếu
+        </th>
+        <th style="text-align:center">
+            Tỷ lệ đổi sim thành công
+        </th>
+        <th style="text-align:center">
+            Phiếu tồn quá 2 ngày
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center">
+            <td>
+                @Html.DisplayFor(modelItem => item.TenTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiSimThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoiSimKhongThanhCong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChuaCoKetQua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongSoPhieu)
+            </td>
+            <td style="background-color:paleturquoise">
+                @Html.DisplayFor(modelItem => item.TyLeDoiSimThanhCong) %
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhieuTonQua2Ngay)
+            </td>
+        </tr>
+    }
+    <tr style="background-color:lightsteelblue;text-align:center">
+        <td>
+            Tổng cộng
+        </td>
+        <td>
+            @ViewBag.DoiSimThanhCong
+        </td>
+        <td>
+            @ViewBag.DoiSimKhongThanhCong
+        </td>
+        <td>
+            @ViewBag.ChuaCoKetQua
+        </td>
+        <td>
+            @ViewBag.TongSoPhieu
+        </td>
+        <td>
+            @ViewBag.TyLeDoiSimThanhCong %
+        </td>
+        <td>
+            @ViewBag.PhieuTonQua2Ngay
+        </td>
+    </tr>
+</table>
+<link href="~/Content/jquery.datetimepicker.css" rel="stylesheet" />
+@section Scripts{
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script src="~/Scripts/jquery.table2excel.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.TuNgay input').datetimepicker(
+                {
+                    format: 'm/d/Y',
+                    //value: new Date()
+                }
+            );
+        });
+        $("#btnExport").click(function () {
+            $("#tblCustomers").table2excel({
+                filename: "Table.xls"
+            });
+        });
+    </script>
+}
+
+
+
+
+

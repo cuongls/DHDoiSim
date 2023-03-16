@@ -10,6 +10,10 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_PX" Type="int" />
+          <Property Name="TenPX" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenDiaBan" Type="nvarchar" MaxLength="500" />
+          <Property Name="NhanVienPhuTrach" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DMDonViKT">
           <Key>
@@ -76,6 +80,15 @@
           <Property Name="NguongTon" Type="float" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="DMNhomDiaBan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_To" Type="int" />
+          <Property Name="TenDonVi" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenTat" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="DMPhong">
           <Key>
             <PropertyRef Name="ID" />
@@ -94,6 +107,7 @@
           <Property Name="Ten_PX" Type="nvarchar" MaxLength="100" />
           <Property Name="ID_Phong" Type="int" />
           <Property Name="TenPhong" Type="nvarchar" MaxLength="100" />
+          <Property Name="TTVT" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="DMStatusOBKH">
           <Key>
@@ -148,13 +162,6 @@
           <Property Name="Permission_Name" Type="nvarchar" MaxLength="100" />
           <Property Name="Timestamps" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DoiSim.dbo.QHPX_Phong_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="QHPX_Phong_XLS">
-          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
-        </EntityType>-->
         <EntityType Name="Sim_KH">
           <Key>
             <PropertyRef Name="ID" />
@@ -197,6 +204,9 @@ warning 6013: The table/view 'DoiSim.dbo.QHPX_Phong_XLS' does not have a primary
           <Property Name="GhiChu3" Type="nvarchar" MaxLength="300" />
           <Property Name="QHHenDoiSim" Type="nvarchar" MaxLength="100" />
           <Property Name="PXHenDoiSim" Type="nvarchar" MaxLength="100" />
+          <Property Name="TenPhanMemNhap" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaBanHenDoiSim" Type="nvarchar" MaxLength="100" />
+          <Property Name="isSendSMS" Type="int" />
         </EntityType>
         <EntityType Name="Sim_KH_NhatKyUpdate">
           <Key>
@@ -215,41 +225,6 @@ warning 6013: The table/view 'DoiSim.dbo.QHPX_Phong_XLS' does not have a primary
           <Property Name="GhiChu" Type="nvarchar" MaxLength="300" />
           <Property Name="TenPhong" Type="nvarchar" MaxLength="100" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DoiSim.dbo.Sim_KH_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Sim_KH_XLS">
-          <Property Name="SoDT_Cu" Type="float" />
-          <Property Name="LOAI_TB" Type="nvarchar" MaxLength="255" />
-          <Property Name="CODE" Type="nvarchar" MaxLength="255" />
-          <Property Name="MODEL" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="GioGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="KetQuaGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayHen" Type="nvarchar" MaxLength="255" />
-          <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="KetQuaDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
-          <Property Name="DIA_CHI_BTS" Type="nvarchar" MaxLength="255" />
-          <Property Name="F19" Type="nvarchar" MaxLength="255" />
-          <Property Name="F20" Type="nvarchar" MaxLength="255" />
-          <Property Name="F21" Type="nvarchar" MaxLength="255" />
-          <Property Name="F22" Type="nvarchar" MaxLength="255" />
-          <Property Name="F23" Type="nvarchar" MaxLength="255" />
-          <Property Name="F24" Type="nvarchar" MaxLength="255" />
-          <Property Name="F25" Type="nvarchar" MaxLength="255" />
-          <Property Name="F26" Type="nvarchar" MaxLength="255" />
-          <Property Name="F27" Type="nvarchar" MaxLength="255" />
-          <Property Name="F28" Type="nvarchar" MaxLength="255" />
-          <Property Name="F29" Type="nvarchar" MaxLength="255" />
-          <Property Name="F30" Type="nvarchar" MaxLength="255" />
-          <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
         <EntityType Name="Sim_Phieu">
           <Key>
             <PropertyRef Name="ID" />
@@ -304,49 +279,14 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_KH_XLS' does not have a primary key
           <Property Name="GhiChu11" Type="nvarchar" MaxLength="300" />
           <Property Name="NgayHenMoi" Type="date" />
           <Property Name="CCCD_KhachHang" Type="nvarchar" MaxLength="300" />
+          <Property Name="ID_Nhom" Type="int" />
+          <Property Name="UserNameThucHien" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaNhanVienThucHien" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeNhapBoSung" Type="datetime" />
+          <Property Name="UserNhapBoSung" Type="nvarchar" MaxLength="100" />
+          <Property Name="DiaBanHenDoiSim" Type="nvarchar" MaxLength="4000" />
+          <Property Name="DoiSoatBienBan" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Sim_Phieu_DaGiao_XLS">
-          <Property Name="TenPhong" Type="nvarchar" MaxLength="255" />
-          <Property Name="ID_Phong" Type="int" />
-          <Property Name="TenTo" Type="nvarchar" MaxLength="255" />
-          <Property Name="ID_To" Type="int" />
-          <Property Name="SoDT_Float" Type="float" />
-          <Property Name="SoDT" Type="nvarchar" MaxLength="50" />
-          <Property Name="LOAI_TB" Type="nvarchar" MaxLength="255" />
-          <Property Name="Code" Type="nvarchar" MaxLength="255" />
-          <Property Name="MODEL" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiGoi_User" Type="nvarchar" MaxLength="255" />
-          <Property Name="GioGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayGoi" Type="datetime" />
-          <Property Name="NgayGoi_DT" Type="datetime" />
-          <Property Name="KetQuaGoi" Type="nvarchar" MaxLength="255" />
-          <Property Name="ID_StatusOBKH" Type="int" />
-          <Property Name="NgayHen" Type="datetime" />
-          <Property Name="NgayHen_DT" Type="datetime" />
-          <Property Name="DiaChiHenDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="NguoiDoiSim_User" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayDoiSim_DT" Type="datetime" />
-          <Property Name="KetQuaDoiSim" Type="nvarchar" MaxLength="255" />
-          <Property Name="ID_KetQuaThucHien" Type="int" />
-          <Property Name="PHONG" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_QH" Type="nvarchar" MaxLength="255" />
-          <Property Name="TEN_PX" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayGiaoPhieu" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayGiaoPhieu_DT" Type="datetime" />
-          <Property Name="GhiChu2" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayPhongGiaoPhieu" Type="nvarchar" MaxLength="255" />
-          <Property Name="NgayPhongGiaoPhieu_DT" Type="datetime" />
-          <Property Name="ID_Sim_KH" Type="int" />
-          <Property Name="UserKhoaPhieu" Type="nvarchar" MaxLength="100" />
-          <Property Name="TimeKhoaPhieu" Type="datetime" />
-          <Property Name="NoiDungKhoaPhieu" Type="nvarchar" MaxLength="300" />
-        </EntityType>-->
         <EntityType Name="Sim_Phieu_NhatKyUpdate">
           <Key>
             <PropertyRef Name="ID" />
@@ -379,6 +319,8 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="Timestamps" Type="datetime" />
           <Property Name="ID_StatusSuDung" Type="int" />
           <Property Name="ID_DonViKT" Type="int" />
+          <Property Name="SoLuong" Type="int" />
+          <Property Name="LoaiDuLieu" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -424,6 +366,33 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="TyLeDoiSimThanhCong" Type="float" />
           <Property Name="NgayBC" Type="date" />
           <Property Name="NgayGioTaoBaoCao" Type="datetime" />
+          <Property Name="TenPhong" Type="nvarchar" MaxLength="50" />
+          <Property Name="TongPhieuTinhLyLe" Type="int" />
+          <Property Name="SoSimDoiNgoaiDanhSach" Type="int" />
+        </EntityType>
+        <EntityType Name="ThongKeChiTietDonVi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SoLuongOKRThang" Type="int" />
+          <Property Name="SoPhieuTiepNhan" Type="int" />
+          <Property Name="SoPhieuDoiThanhCong" Type="int" />
+          <Property Name="TyLeDoiThanhCong" Type="float" />
+          <Property Name="PhieuNhanTrongNgay" Type="int" />
+          <Property Name="PhieuDoiThanhCongTrongNgay" Type="int" />
+          <Property Name="TyLeThanhCongTrongNgay" Type="float" />
+          <Property Name="TongSoPhieuTon" Type="int" />
+          <Property Name="PhieuTonQua2Ngay" Type="int" />
+          <Property Name="DiemOKRThang" Type="int" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="500" />
+          <Property Name="TenTo" Type="nvarchar" MaxLength="500" />
+          <Property Name="IDTo" Type="int" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoiSimThanhCong" Type="int" />
+          <Property Name="DoiSimKhongThanhCong" Type="int" />
+          <Property Name="ChuaCoKetQua" Type="int" />
+          <Property Name="TongSoPhieu" Type="int" />
+          <Property Name="TyLeDoiSimThanhCong" Type="float" />
         </EntityType>
         <EntityType Name="ThongKeDoiSimThanhCong">
           <Key>
@@ -469,6 +438,24 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="TuNgay" Type="date" />
           <Property Name="DenNgay" Type="date" />
           <Property Name="PhieuDaXuat" Type="int" />
+          <Property Name="TongCuocGoi" Type="int" />
+          <Property Name="ThanhCong" Type="int" />
+          <Property Name="KhongThanhCong" Type="int" />
+          <Property Name="DaDoi" Type="int" />
+          <Property Name="DangGoi" Type="int" />
+          <Property Name="KHDongYDS" Type="int" />
+          <Property Name="KHKhongDYDS" Type="int" />
+          <Property Name="DaGoiChuaCoKQ" Type="int" />
+          <Property Name="KhongLLDuoc" Type="int" />
+          <Property Name="KHTuDS" Type="int" />
+          <Property Name="KHChuyenTinh" Type="int" />
+          <Property Name="KHDaDS" Type="int" />
+          <Property Name="PVT" Type="int" />
+          <Property Name="PHT" Type="int" />
+          <Property Name="PKT" Type="int" />
+          <Property Name="PKTHT" Type="int" />
+          <Property Name="PVIP" Type="int" />
+          <Property Name="PTH" Type="int" />
         </EntityType>
         <EntityType Name="UserList">
           <Key>
@@ -494,7 +481,21 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="UserCreate" Type="nvarchar" MaxLength="100" />
           <Property Name="MaDonVi" Type="nvarchar" MaxLength="100" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="100" />
+          <Property Name="ID_Nhom" Type="int" />
+          <Property Name="MaNhanVien" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_DMNhomDiaBan_DMTo">
+          <End Role="DMTo" Type="Self.DMTo" Multiplicity="0..1" />
+          <End Role="DMNhomDiaBan" Type="Self.DMNhomDiaBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DMNhomDiaBan">
+              <PropertyRef Name="ID_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DMPhong_DMDonViKT">
           <End Role="DMDonViKT" Type="Self.DMDonViKT" Multiplicity="0..1" />
           <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="*" />
@@ -735,6 +736,18 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserList_DMNhom">
+          <End Role="DMNhomDiaBan" Type="Self.DMNhomDiaBan" Multiplicity="0..1" />
+          <End Role="UserList" Type="Self.UserList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMNhomDiaBan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserList">
+              <PropertyRef Name="ID_Nhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserList_DMPhong">
           <End Role="DMPhong" Type="Self.DMPhong" Multiplicity="0..1" />
           <End Role="UserList" Type="Self.UserList" Multiplicity="*" />
@@ -796,6 +809,7 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_GenUserNameAndMaNVToSimPhieu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -812,6 +826,11 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_ThongKeChiTietDonVi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Phong" Type="int" Mode="In" />
+          <Parameter Name="tungay" Type="varchar" Mode="In" />
+          <Parameter Name="denngay" Type="varchar" Mode="In" />
         </Function>
         <Function Name="SP_ThongKeKetQuaDoiSim" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="TuNgay" Type="datetime" Mode="In" />
@@ -841,6 +860,7 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySet Name="DMLyDoTon" EntityType="Self.DMLyDoTon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMMucUuTien" EntityType="Self.DMMucUuTien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMNguongTon" EntityType="Self.DMNguongTon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DMNhomDiaBan" EntityType="Self.DMNhomDiaBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMPhong" EntityType="Self.DMPhong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMQHPX" EntityType="Self.DMQHPX" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DMStatusOBKH" EntityType="Self.DMStatusOBKH" Schema="dbo" store:Type="Tables" />
@@ -858,10 +878,15 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySet Name="TestTable" EntityType="Self.TestTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKe" EntityType="Self.ThongKe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ThongKeChiTietDonVi" EntityType="Self.ThongKeChiTietDonVi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKeDoiSimThanhCong" EntityType="Self.ThongKeDoiSimThanhCong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKeNSCL" EntityType="Self.ThongKeNSCL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongKeOutBound" EntityType="Self.ThongKeOutBound" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserList" EntityType="Self.UserList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DMNhomDiaBan_DMTo" Association="Self.FK_DMNhomDiaBan_DMTo">
+            <End Role="DMTo" EntitySet="DMTo" />
+            <End Role="DMNhomDiaBan" EntitySet="DMNhomDiaBan" />
+          </AssociationSet>
           <AssociationSet Name="FK_DMPhong_DMDonViKT" Association="Self.FK_DMPhong_DMDonViKT">
             <End Role="DMDonViKT" EntitySet="DMDonViKT" />
             <End Role="DMPhong" EntitySet="DMPhong" />
@@ -942,6 +967,10 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
             <End Role="DMPhong" EntitySet="DMPhong" />
             <End Role="ThongKe" EntitySet="ThongKe" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserList_DMNhom" Association="Self.FK_UserList_DMNhom">
+            <End Role="DMNhomDiaBan" EntitySet="DMNhomDiaBan" />
+            <End Role="UserList" EntitySet="UserList" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserList_DMPhong" Association="Self.FK_UserList_DMPhong">
             <End Role="DMPhong" EntitySet="DMPhong" />
             <End Role="UserList" EntitySet="UserList" />
@@ -964,6 +993,10 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_PX" Type="Int32" />
+          <Property Name="TenDiaBan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NhanVienPhuTrach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenPX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DMDonViKT">
           <Key>
@@ -1049,6 +1082,7 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <NavigationProperty Name="Sim_Trang" Relationship="DoiSimModel.FK_Sim_Trang_DMTo" FromRole="DMTo" ToRole="Sim_Trang" />
           <NavigationProperty Name="UserLists" Relationship="DoiSimModel.FK_UserList_DMTo" FromRole="DMTo" ToRole="UserList" />
           <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_DMTo" FromRole="DMTo" ToRole="Sim_Phieu" />
+          <NavigationProperty Name="DMNhomDiaBans" Relationship="DoiSimModel.FK_DMNhomDiaBan_DMTo" FromRole="DMTo" ToRole="DMNhomDiaBan" />
         </EntityType>
         <EntityType Name="Permission">
           <Key>
@@ -1283,6 +1317,22 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
             <Parameter Name="DenNgay" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="ThongKeOutBounds" EntityType="DoiSimModel.ThongKeOutBound" />
+          <FunctionImport Name="SP_GenUserNameAndMaNVToSimPhieu" />
+          <FunctionImport Name="SP_ThongKeChiTietDonVi">
+            <Parameter Name="Phong" Mode="In" Type="Int32" />
+            <Parameter Name="tungay" Mode="In" Type="String" />
+            <Parameter Name="denngay" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="DMNhomDiaBans" EntityType="DoiSimModel.DMNhomDiaBan" />
+          <AssociationSet Name="FK_DMNhomDiaBan_DMTo" Association="DoiSimModel.FK_DMNhomDiaBan_DMTo">
+            <End Role="DMTo" EntitySet="DMToes" />
+            <End Role="DMNhomDiaBan" EntitySet="DMNhomDiaBans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserList_DMNhom" Association="DoiSimModel.FK_UserList_DMNhom">
+            <End Role="DMNhomDiaBan" EntitySet="DMNhomDiaBans" />
+            <End Role="UserList" EntitySet="UserLists" />
+          </AssociationSet>
+          <EntitySet Name="ThongKeChiTietDonVis" EntityType="DoiSimModel.ThongKeChiTietDonVi" />
           </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1320,6 +1370,8 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_Sim_Trang_DMPhong" FromRole="Sim_Trang" ToRole="DMPhong" />
           <NavigationProperty Name="DMStatusSuDung" Relationship="DoiSimModel.FK_Sim_Trang_DMStatusSuDung" FromRole="Sim_Trang" ToRole="DMStatusSuDung" />
           <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_Sim_Trang_DMTo" FromRole="Sim_Trang" ToRole="DMTo" />
+          <Property Name="SoLuong" Type="Int32" />
+          <Property Name="LoaiDuLieu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Sim_Trang_DMDonViKT">
           <End Type="DoiSimModel.DMDonViKT" Role="DMDonViKT" Multiplicity="0..1" />
@@ -1378,6 +1430,7 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="Ten_PX" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ID_Phong" Type="Int32" />
           <Property Name="TenPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TTVT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Sim_KH">
           <Key>
@@ -1426,6 +1479,9 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <NavigationProperty Name="DMStatusOBKH" Relationship="DoiSimModel.FK_Sim_KH_DMStatusOBKH" FromRole="Sim_KH" ToRole="DMStatusOBKH" />
           <NavigationProperty Name="Sim_Phieu" Relationship="DoiSimModel.FK_Sim_Phieu_Sim_KH" FromRole="Sim_KH" ToRole="Sim_Phieu" />
           <NavigationProperty Name="Sim_KH_NhatKyUpdate" Relationship="DoiSimModel.FK_Sim_KH_NhatKyUpdate_Sim_KH" FromRole="Sim_KH" ToRole="Sim_KH_NhatKyUpdate" />
+          <Property Name="TenPhanMemNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaBanHenDoiSim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="isSendSMS" Type="Int32" />
         </EntityType>
         <Association Name="FK_Sim_KH_DMDonViKT">
           <End Type="DoiSimModel.DMDonViKT" Role="DMDonViKT" Multiplicity="0..1" />
@@ -1478,6 +1534,9 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="NgayBC" Type="DateTime" Precision="0" />
           <Property Name="NgayGioTaoBaoCao" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_ThongKe_DMPhong" FromRole="ThongKe" ToRole="DMPhong" />
+          <Property Name="TenPhong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TongPhieuTinhLyLe" Type="Int32" />
+          <Property Name="SoSimDoiNgoaiDanhSach" Type="Int32" />
         </EntityType>
         <Association Name="FK_ThongKe_DMPhong">
           <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
@@ -1528,6 +1587,9 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <NavigationProperty Name="DMPhong" Relationship="DoiSimModel.FK_UserList_DMPhong" FromRole="UserList" ToRole="DMPhong" />
           <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_UserList_DMTo" FromRole="UserList" ToRole="DMTo" />
           <NavigationProperty Name="Permission" Relationship="DoiSimModel.FK_UserList_Permission" FromRole="UserList" ToRole="Permission" />
+          <Property Name="ID_Nhom" Type="Int32" />
+          <Property Name="MaNhanVien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DMNhomDiaBan" Relationship="DoiSimModel.FK_UserList_DMNhom" FromRole="UserList" ToRole="DMNhomDiaBan" />
         </EntityType>
         <Association Name="FK_UserList_DMPhong">
           <End Type="DoiSimModel.DMPhong" Role="DMPhong" Multiplicity="0..1" />
@@ -1653,6 +1715,13 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <NavigationProperty Name="Sim_KH" Relationship="DoiSimModel.FK_Sim_Phieu_Sim_KH" FromRole="Sim_Phieu" ToRole="Sim_KH" />
           <NavigationProperty Name="Sim_Phieu_NhatKyUpdate" Relationship="DoiSimModel.FK_Sim_Phieu_NhatKyUpdate_Sim_Phieu" FromRole="Sim_Phieu" ToRole="Sim_Phieu_NhatKyUpdate" />
           <Property Name="CCCD_KhachHang" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Nhom" Type="Int32" />
+          <Property Name="UserNameThucHien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhanVienThucHien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeNhapBoSung" Type="DateTime" Precision="3" />
+          <Property Name="UserNhapBoSung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaBanHenDoiSim" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="DoiSoatBienBan" Type="Int32" />
         </EntityType>
         <Association Name="FK_Sim_Phieu_DMKetQuaThucHien">
           <End Type="DoiSimModel.DMKetQuaThucHien" Role="DMKetQuaThucHien" Multiplicity="0..1" />
@@ -1878,6 +1947,83 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <Property Name="TuNgay" Type="DateTime" Precision="0" />
           <Property Name="DenNgay" Type="DateTime" Precision="0" />
           <Property Name="PhieuDaXuat" Type="Int32" />
+          <Property Name="TongCuocGoi" Type="Int32" />
+          <Property Name="ThanhCong" Type="Int32" />
+          <Property Name="KhongThanhCong" Type="Int32" />
+          <Property Name="DaDoi" Type="Int32" />
+          <Property Name="DangGoi" Type="Int32" />
+          <Property Name="KHDongYDS" Type="Int32" />
+          <Property Name="KHKhongDYDS" Type="Int32" />
+          <Property Name="DaGoiChuaCoKQ" Type="Int32" />
+          <Property Name="KhongLLDuoc" Type="Int32" />
+          <Property Name="KHTuDS" Type="Int32" />
+          <Property Name="KHChuyenTinh" Type="Int32" />
+          <Property Name="KHDaDS" Type="Int32" />
+          <Property Name="PVT" Type="Int32" />
+          <Property Name="PHT" Type="Int32" />
+          <Property Name="PKT" Type="Int32" />
+          <Property Name="PKTHT" Type="Int32" />
+          <Property Name="PVIP" Type="Int32" />
+          <Property Name="PTH" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DMNhomDiaBan">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_To" Type="Int32" />
+          <Property Name="TenDonVi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenTat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DMTo" Relationship="DoiSimModel.FK_DMNhomDiaBan_DMTo" FromRole="DMNhomDiaBan" ToRole="DMTo" />
+          <NavigationProperty Name="UserLists" Relationship="DoiSimModel.FK_UserList_DMNhom" FromRole="DMNhomDiaBan" ToRole="UserList" />
+        </EntityType>
+        <Association Name="FK_DMNhomDiaBan_DMTo">
+          <End Type="DoiSimModel.DMTo" Role="DMTo" Multiplicity="0..1" />
+          <End Type="DoiSimModel.DMNhomDiaBan" Role="DMNhomDiaBan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMTo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DMNhomDiaBan">
+              <PropertyRef Name="ID_To" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserList_DMNhom">
+          <End Type="DoiSimModel.DMNhomDiaBan" Role="DMNhomDiaBan" Multiplicity="0..1" />
+          <End Type="DoiSimModel.UserList" Role="UserList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DMNhomDiaBan">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserList">
+              <PropertyRef Name="ID_Nhom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ThongKeChiTietDonVi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SoLuongOKRThang" Type="Int32" />
+          <Property Name="SoPhieuTiepNhan" Type="Int32" />
+          <Property Name="SoPhieuDoiThanhCong" Type="Int32" />
+          <Property Name="TyLeDoiThanhCong" Type="Double" />
+          <Property Name="PhieuNhanTrongNgay" Type="Int32" />
+          <Property Name="PhieuDoiThanhCongTrongNgay" Type="Int32" />
+          <Property Name="TyLeThanhCongTrongNgay" Type="Double" />
+          <Property Name="TongSoPhieuTon" Type="Int32" />
+          <Property Name="PhieuTonQua2Ngay" Type="Int32" />
+          <Property Name="DiemOKRThang" Type="Int32" />
+          <Property Name="GhiChu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TenTo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IDTo" Type="Int32" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoiSimThanhCong" Type="Int32" />
+          <Property Name="DoiSimKhongThanhCong" Type="Int32" />
+          <Property Name="ChuaCoKetQua" Type="Int32" />
+          <Property Name="TongSoPhieu" Type="Int32" />
+          <Property Name="TyLeDoiSimThanhCong" Type="Double" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1888,6 +2034,10 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="DMDiaBans">
             <EntityTypeMapping TypeName="DoiSimModel.DMDiaBan">
               <MappingFragment StoreEntitySet="DMDiaBan">
+                <ScalarProperty Name="TenPX" ColumnName="TenPX" />
+                <ScalarProperty Name="NhanVienPhuTrach" ColumnName="NhanVienPhuTrach" />
+                <ScalarProperty Name="TenDiaBan" ColumnName="TenDiaBan" />
+                <ScalarProperty Name="ID_PX" ColumnName="ID_PX" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2028,6 +2178,8 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="Sim_Trang">
             <EntityTypeMapping TypeName="DoiSimModel.Sim_Trang">
               <MappingFragment StoreEntitySet="Sim_Trang">
+                <ScalarProperty Name="LoaiDuLieu" ColumnName="LoaiDuLieu" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
                 <ScalarProperty Name="ID_DonViKT" ColumnName="ID_DonViKT" />
                 <ScalarProperty Name="ID_StatusSuDung" ColumnName="ID_StatusSuDung" />
                 <ScalarProperty Name="Timestamps" ColumnName="Timestamps" />
@@ -2051,6 +2203,7 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="DMQHPXes">
             <EntityTypeMapping TypeName="DoiSimModel.DMQHPX">
               <MappingFragment StoreEntitySet="DMQHPX">
+                <ScalarProperty Name="TTVT" ColumnName="TTVT" />
                 <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
                 <ScalarProperty Name="ID_Phong" ColumnName="ID_Phong" />
                 <ScalarProperty Name="Ten_PX" ColumnName="Ten_PX" />
@@ -2063,6 +2216,9 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="Sim_KH">
             <EntityTypeMapping TypeName="DoiSimModel.Sim_KH">
               <MappingFragment StoreEntitySet="Sim_KH">
+                <ScalarProperty Name="isSendSMS" ColumnName="isSendSMS" />
+                <ScalarProperty Name="DiaBanHenDoiSim" ColumnName="DiaBanHenDoiSim" />
+                <ScalarProperty Name="TenPhanMemNhap" ColumnName="TenPhanMemNhap" />
                 <ScalarProperty Name="PXHenDoiSim" ColumnName="PXHenDoiSim" />
                 <ScalarProperty Name="QHHenDoiSim" ColumnName="QHHenDoiSim" />
                 <ScalarProperty Name="GhiChu3" ColumnName="GhiChu3" />
@@ -2107,6 +2263,9 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="ThongKes">
             <EntityTypeMapping TypeName="DoiSimModel.ThongKe">
               <MappingFragment StoreEntitySet="ThongKe">
+                <ScalarProperty Name="SoSimDoiNgoaiDanhSach" ColumnName="SoSimDoiNgoaiDanhSach" />
+                <ScalarProperty Name="TongPhieuTinhLyLe" ColumnName="TongPhieuTinhLyLe" />
+                <ScalarProperty Name="TenPhong" ColumnName="TenPhong" />
                 <ScalarProperty Name="NgayGioTaoBaoCao" ColumnName="NgayGioTaoBaoCao" />
                 <ScalarProperty Name="NgayBC" ColumnName="NgayBC" />
                 <ScalarProperty Name="TyLeDoiSimThanhCong" ColumnName="TyLeDoiSimThanhCong" />
@@ -2134,6 +2293,8 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="UserLists">
             <EntityTypeMapping TypeName="DoiSimModel.UserList">
               <MappingFragment StoreEntitySet="UserList">
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="ID_Nhom" ColumnName="ID_Nhom" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="MaDonVi" ColumnName="MaDonVi" />
                 <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
@@ -2192,6 +2353,13 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="Sim_Phieu">
             <EntityTypeMapping TypeName="DoiSimModel.Sim_Phieu">
               <MappingFragment StoreEntitySet="Sim_Phieu">
+                <ScalarProperty Name="DoiSoatBienBan" ColumnName="DoiSoatBienBan" />
+                <ScalarProperty Name="DiaBanHenDoiSim" ColumnName="DiaBanHenDoiSim" />
+                <ScalarProperty Name="UserNhapBoSung" ColumnName="UserNhapBoSung" />
+                <ScalarProperty Name="TimeNhapBoSung" ColumnName="TimeNhapBoSung" />
+                <ScalarProperty Name="MaNhanVienThucHien" ColumnName="MaNhanVienThucHien" />
+                <ScalarProperty Name="UserNameThucHien" ColumnName="UserNameThucHien" />
+                <ScalarProperty Name="ID_Nhom" ColumnName="ID_Nhom" />
                 <ScalarProperty Name="CCCD_KhachHang" ColumnName="CCCD_KhachHang" />
                 <ScalarProperty Name="NgayHenMoi" ColumnName="NgayHenMoi" />
                 <ScalarProperty Name="GhiChu11" ColumnName="GhiChu11" />
@@ -2348,6 +2516,24 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
           <EntitySetMapping Name="ThongKeOutBounds">
             <EntityTypeMapping TypeName="DoiSimModel.ThongKeOutBound">
               <MappingFragment StoreEntitySet="ThongKeOutBound">
+                <ScalarProperty Name="PTH" ColumnName="PTH" />
+                <ScalarProperty Name="PVIP" ColumnName="PVIP" />
+                <ScalarProperty Name="PKTHT" ColumnName="PKTHT" />
+                <ScalarProperty Name="PKT" ColumnName="PKT" />
+                <ScalarProperty Name="PHT" ColumnName="PHT" />
+                <ScalarProperty Name="PVT" ColumnName="PVT" />
+                <ScalarProperty Name="KHDaDS" ColumnName="KHDaDS" />
+                <ScalarProperty Name="KHChuyenTinh" ColumnName="KHChuyenTinh" />
+                <ScalarProperty Name="KHTuDS" ColumnName="KHTuDS" />
+                <ScalarProperty Name="KhongLLDuoc" ColumnName="KhongLLDuoc" />
+                <ScalarProperty Name="DaGoiChuaCoKQ" ColumnName="DaGoiChuaCoKQ" />
+                <ScalarProperty Name="KHKhongDYDS" ColumnName="KHKhongDYDS" />
+                <ScalarProperty Name="KHDongYDS" ColumnName="KHDongYDS" />
+                <ScalarProperty Name="DangGoi" ColumnName="DangGoi" />
+                <ScalarProperty Name="DaDoi" ColumnName="DaDoi" />
+                <ScalarProperty Name="KhongThanhCong" ColumnName="KhongThanhCong" />
+                <ScalarProperty Name="ThanhCong" ColumnName="ThanhCong" />
+                <ScalarProperty Name="TongCuocGoi" ColumnName="TongCuocGoi" />
                 <ScalarProperty Name="PhieuDaXuat" ColumnName="PhieuDaXuat" />
                 <ScalarProperty Name="DenNgay" ColumnName="DenNgay" />
                 <ScalarProperty Name="TuNgay" ColumnName="TuNgay" />
@@ -2357,6 +2543,43 @@ warning 6013: The table/view 'DoiSim.dbo.Sim_Phieu_DaGiao_XLS' does not have a p
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GenUserNameAndMaNVToSimPhieu" FunctionName="DoiSimModel.Store.SP_GenUserNameAndMaNVToSimPhieu" />
+          <FunctionImportMapping FunctionImportName="SP_ThongKeChiTietDonVi" FunctionName="DoiSimModel.Store.SP_ThongKeChiTietDonVi" />
+          <EntitySetMapping Name="DMNhomDiaBans">
+            <EntityTypeMapping TypeName="DoiSimModel.DMNhomDiaBan">
+              <MappingFragment StoreEntitySet="DMNhomDiaBan">
+                <ScalarProperty Name="TenTat" ColumnName="TenTat" />
+                <ScalarProperty Name="TenDonVi" ColumnName="TenDonVi" />
+                <ScalarProperty Name="ID_To" ColumnName="ID_To" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ThongKeChiTietDonVis">
+            <EntityTypeMapping TypeName="DoiSimModel.ThongKeChiTietDonVi">
+              <MappingFragment StoreEntitySet="ThongKeChiTietDonVi">
+                <ScalarProperty Name="TyLeDoiSimThanhCong" ColumnName="TyLeDoiSimThanhCong" />
+                <ScalarProperty Name="TongSoPhieu" ColumnName="TongSoPhieu" />
+                <ScalarProperty Name="ChuaCoKetQua" ColumnName="ChuaCoKetQua" />
+                <ScalarProperty Name="DoiSimKhongThanhCong" ColumnName="DoiSimKhongThanhCong" />
+                <ScalarProperty Name="DoiSimThanhCong" ColumnName="DoiSimThanhCong" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDTo" ColumnName="IDTo" />
+                <ScalarProperty Name="TenTo" ColumnName="TenTo" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="DiemOKRThang" ColumnName="DiemOKRThang" />
+                <ScalarProperty Name="PhieuTonQua2Ngay" ColumnName="PhieuTonQua2Ngay" />
+                <ScalarProperty Name="TongSoPhieuTon" ColumnName="TongSoPhieuTon" />
+                <ScalarProperty Name="TyLeThanhCongTrongNgay" ColumnName="TyLeThanhCongTrongNgay" />
+                <ScalarProperty Name="PhieuDoiThanhCongTrongNgay" ColumnName="PhieuDoiThanhCongTrongNgay" />
+                <ScalarProperty Name="PhieuNhanTrongNgay" ColumnName="PhieuNhanTrongNgay" />
+                <ScalarProperty Name="TyLeDoiThanhCong" ColumnName="TyLeDoiThanhCong" />
+                <ScalarProperty Name="SoPhieuDoiThanhCong" ColumnName="SoPhieuDoiThanhCong" />
+                <ScalarProperty Name="SoPhieuTiepNhan" ColumnName="SoPhieuTiepNhan" />
+                <ScalarProperty Name="SoLuongOKRThang" ColumnName="SoLuongOKRThang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

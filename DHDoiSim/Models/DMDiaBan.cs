@@ -15,5 +15,9 @@ namespace DHDoiSim.Models
     public partial class DMDiaBan
     {
         public int ID { get; set; }
+        public Nullable<int> ID_PX { get; set; }
+        public string TenDiaBan { get; set; }
+        public string NhanVienPhuTrach { get; set; }
+        public string TenPX { get; set; }
     }
 }

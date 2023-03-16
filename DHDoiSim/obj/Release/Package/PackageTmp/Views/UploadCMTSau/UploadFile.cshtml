@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "UploadFile";
+}
+
+<h2>Upload CMT Mặt sau</h2>
+<h4>ID Sim phiếu @ViewBag.ID_Sim_Phieu</h4>
+@using (Html.BeginForm("UploadFile", "UploadCMTSau", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        @Html.TextBox("file", "", new { type = "file" }) <br />
+        @Html.TextBox("idsp", (string)ViewBag.ID_Sim_Phieu, new { type = "string", @readonly = "readonly", @hidden = "true" }) <br />
+        @*<input type="text" id="idsp" value = @ViewBag.ID_Sim_Phieu />*@
+        <input type="submit" value="Upload" />
+        @ViewBag.Message
+    </div>
+}
+

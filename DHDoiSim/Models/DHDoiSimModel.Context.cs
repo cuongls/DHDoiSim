@@ -57,6 +57,8 @@ namespace DHDoiSim.Models
         public virtual DbSet<DMKyThongKeNSCL> DMKyThongKeNSCLs { get; set; }
         public virtual DbSet<ThongKeNSCL> ThongKeNSCLs { get; set; }
         public virtual DbSet<ThongKeOutBound> ThongKeOutBounds { get; set; }
+        public virtual DbSet<DMNhomDiaBan> DMNhomDiaBans { get; set; }
+        public virtual DbSet<ThongKeChiTietDonVi> ThongKeChiTietDonVis { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
@@ -271,6 +273,28 @@ namespace DHDoiSim.Models
                 new ObjectParameter("DenNgay", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ThongKeKetQuaDoiSim", tuNgayParameter, denNgayParameter);
+        }
+    
+        public virtual int SP_GenUserNameAndMaNVToSimPhieu()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_GenUserNameAndMaNVToSimPhieu");
+        }
+    
+        public virtual int SP_ThongKeChiTietDonVi(Nullable<int> phong, string tungay, string denngay)
+        {
+            var phongParameter = phong.HasValue ?
+                new ObjectParameter("Phong", phong) :
+                new ObjectParameter("Phong", typeof(int));
+    
+            var tungayParameter = tungay != null ?
+                new ObjectParameter("tungay", tungay) :
+                new ObjectParameter("tungay", typeof(string));
+    
+            var denngayParameter = denngay != null ?
+                new ObjectParameter("denngay", denngay) :
+                new ObjectParameter("denngay", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_ThongKeChiTietDonVi", phongParameter, tungayParameter, denngayParameter);
         }
     }
 }

@@ -1,0 +1,284 @@
+﻿@model IEnumerable<DHDoiSim.Models.Sim_Phieu>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="color:red">Chia phiếu đến nhân viên thực hiện</h2>
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+@*ThaiHN thêm*@
+@using (Html.BeginForm("ChiaPhieuDenDiaBan", "NhanKhoaPhieu", FormMethod.Get))
+{
+    <div class="row">
+
+        <div class="col-md-2">
+            Số Điện thoại
+        </div>
+
+        <div class="col-md-2">
+            @Html.TextBox("SoDT", "", new { style = "color:red" })
+        </div>
+
+        <div class="col-md-3">
+            <button type="submit" class="btn btn-info">
+                <span class="glyphicon glyphicon-search"></span>
+                <span class="submit-text">&nbsp;&nbsp;Tìm</span>
+            </button>
+        </div>
+
+    </div>
+}
+@*Hết thêm*@
+<table class="table">
+    <tr>
+        <th>STT</th>
+
+        <th>
+            Chia phiếu
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </th>
+        <th>
+            Tên Phòng
+            @*@Html.DisplayNameFor(model => model.DMPhong.TenDonVi)*@
+        </th>
+        <th>
+            Tên tổ
+            @*@Html.DisplayNameFor(model => model.DMTo.TenDonVi)*@
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DMLyDoTon.LyDoTon)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UserXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungXP)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Ten_QH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ten_PX)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiHenDoiSim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioHen)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiTB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModelDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeXP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeChiaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserChiaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungChiaPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungNhanPhieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeCapNhatKetQuaThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDungThucHien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_CMT_Truoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_CMT_Sau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_BienBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DMDonViKT.TenDonVi)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMKetQuaThucHien.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DMMucUuTien.StatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sim_KH.SoDT)
+        </th>
+        <th></th>
+    </tr>
+
+    @{int rowNo = 0;}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(rowNo += 1)
+            </td>
+            <td>
+                <a href="/NhanKhoaPhieu/EditChiaPhieuTTVT/@item.ID " class="btn btn-primary" title="Chia Phiếu">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </a>
+            </td>
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.SoDT)
+                </font>
+            </td>
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.DMPhong.TenDonVi)
+                </font>
+
+            </td>
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.DMTo.TenDonVi)
+                </font>
+            </td>
+
+            <td>
+                <font color="#FF0000">
+                    @Html.DisplayFor(modelItem => item.DMLyDoTon.LyDoTon)
+                </font>
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UserXP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungXP)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten_QH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten_PX)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChiHenDoiSim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GioHen)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiTB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelDienThoai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeXP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeChiaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserChiaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungChiaPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungNhanPhieu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TimeCapNhatKetQuaThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDungThucHien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_CMT_Truoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_CMT_Sau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Image_BienBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.DMDonViKT.TenDonVi)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMKetQuaThucHien.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DMMucUuTien.StatusName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sim_KH.SoDT)
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+            </td>
+        </tr>
+    }
+
+</table>

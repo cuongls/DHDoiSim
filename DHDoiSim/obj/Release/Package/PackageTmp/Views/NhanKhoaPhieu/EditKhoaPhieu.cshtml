@@ -1,0 +1,271 @@
+﻿@model DHDoiSim.Models.Sim_Phieu
+@using DHDoiSim.Common;
+@{User user = new User();}
+
+@*@{
+    ViewBag.Title = "Edit";
+}*@
+<h2>Khóa phiếu </h2>
+<h4 style= "color:red">@ViewBag.Message</h4>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="color:green">Mã phiếu: @ViewBag.ID_Sim_Phieu; Số ĐT: @ViewBag.SoDT </h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_Sim_KH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID_Sim_KH, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.ID_Sim_KH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image_CMT_Truoc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Image_CMT_Truoc, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image_CMT_Truoc, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.Label("Chọn file ảnh")
+            </div>
+
+            <div class="col-md-1">
+                <a href="/UploadCMTTruoc/UploadFile/@ViewBag.ID_Sim_Phieu" class="btn btn-primary" title="Upload mặt trước CMT">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <font color="#FF0000">
+                    @ViewBag.CMT_Truoc
+                </font>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image_CMT_Sau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Image_CMT_Sau, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image_CMT_Sau, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.Label("Chọn file ảnh")
+            </div>
+
+            <div class="col-md-1">
+                <a href="/UploadCMTSau/UploadFile/@ViewBag.ID_Sim_Phieu" class="btn btn-primary" title="Upload mặt sau CMT">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <font color="#FF0000">
+                    @ViewBag.CMT_Sau
+                </font>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image_BienBan, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Image_BienBan, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image_BienBan, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.Label("Chọn file ảnh")
+            </div>
+
+            <div class="col-md-1">
+                <a href="/UploadBienBan/UploadFile/@ViewBag.ID_Sim_Phieu" class="btn btn-primary" title="Upload Biên bản">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <font color="#FF0000">
+                    @ViewBag.BienBan
+                </font>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image_CamKetKhongCC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Image_CamKetKhongCC, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Image_CamKetKhongCC, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2">
+                @Html.Label("Chọn file ảnh")
+            </div>
+
+            <div class="col-md-1">
+                <a href="/UploadCamKetKhongCC/UploadFile/@ViewBag.ID_Sim_Phieu" class="btn btn-primary" title="Upload Biên bản">
+                    <span class="glyphicon glyphicon-edit"></span>
+                </a>
+            </div>
+            <div class="col-md-2">
+                <font color="#FF0000">
+                    @ViewBag.CamKetKhongCC
+                </font>
+            </div>
+
+        </div>
+ 
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_LoaiGiayTo, "ID_LoaiGiayTo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_LoaiGiayTo", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_LoaiGiayTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SerialNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SerialNumber, new { htmlAttributes = new { @class = "form-control", @id = "SN"} })
+                @Html.ValidationMessageFor(model => model.SerialNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserThucHien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.UserThucHien, new { htmlAttributes = new { @class = "form-control", @id = "USERTHUCHIEN", @Value = user.USERNAME, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserThucHien, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @*@Html.Label("Quận huyện:")*@
+                    <select id="IDUserTH_" class="form-control" onchange="OnGradeChanged_User(this.value);">
+                        <option value="" selected>User thuộc Phòng</option>
+                        @{
+                            foreach (var item in ViewBag.list_user)
+                            {
+                                <option value="@item.UserName">@item.UserName</option>
+                            }
+                        }
+                    </select>
+                </font>
+            </div>
+
+            <div class="col-md-3">
+                <font color="#FF0000">
+                    @*@Html.Label("Quận huyện:")*@
+                    <select id="IDUserTHKhac_" class="form-control" onchange="OnGradeChanged_User_Khac(this.value);">
+                        <option value="" selected>User khác Phòng</option>
+                        @{
+                            foreach (var item in ViewBag.list_user_khac)
+                            {
+                                <option value="@item.UserName">@item.UserName</option>
+                            }
+                        }
+                    </select>
+                </font>
+            </div>
+
+            @*<div class="col-md-3">
+            <font color="#FF0000">
+                @Html.Label("Chọn nếu người đổi sim khác user KP")
+            </font>
+        </div>*@
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserKhoaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.UserKhoaPhieu, new { htmlAttributes = new { @class = "form-control", @Value = user.USERNAME, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.UserKhoaPhieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeKhoaPhieu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeKhoaPhieu, new { htmlAttributes = new { @class = "form-control", @Value = System.DateTime.Now, @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.TimeKhoaPhieu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateThucHien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.DateThucHien, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.DateThucHien, "", new { @class = "text-danger" })
+            </div>
+ 
+            <div class="col-md-6">
+                <font color="#FF0000">
+                    @Html.Label("Chú ý đúng Format: m/d/yyyy")
+                </font>
+            </div>
+
+
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_KetQuaThucHien, "ID_KetQuaThucHien", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ID_KetQuaThucHien", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ID_KetQuaThucHien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NoiDungThucHien, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NoiDungThucHien, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiDungThucHien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.GhiChu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Khóa phiếu" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function OnGradeChanged_ST(element) {
+        //alert(value);
+        var text = element.options[element.selectedIndex].text;
+        $("#SN").val(text);
+    }
+    function OnGradeChanged_User(value) {
+        $("#USERTHUCHIEN").val(value);
+        //alert(value);
+    }
+    function OnGradeChanged_User_Khac(value) {
+        $("#USERTHUCHIEN").val(value);
+        //alert(value);
+    }
+
+</script>

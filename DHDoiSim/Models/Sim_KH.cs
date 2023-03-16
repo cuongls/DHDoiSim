@@ -59,6 +59,9 @@ namespace DHDoiSim.Models
         public string GhiChu3 { get; set; }
         public string QHHenDoiSim { get; set; }
         public string PXHenDoiSim { get; set; }
+        public string TenPhanMemNhap { get; set; }
+        public string DiaBanHenDoiSim { get; set; }
+        public Nullable<int> isSendSMS { get; set; }
     
         public virtual DMDonViKT DMDonViKT { get; set; }
         public virtual DMKetQuaThucHien DMKetQuaThucHien { get; set; }
