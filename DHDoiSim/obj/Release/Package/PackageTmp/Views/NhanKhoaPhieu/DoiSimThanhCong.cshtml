@@ -231,23 +231,27 @@
             });
         });
         function capnhatphieu(id) {
-            $.ajax({
-                type: "GET",
-                url: "/NhanKhoaPhieu/CapNhatBienBan",
-                data: { id: id },
-                contentType: "application/json; charset=utf-8",
-                dataType: "html",
-                success: function (response) {
-                    alert(response);
-                    //$('#dialog').show('open');
-                },
-                failure: function (response) {
-                    //alert(response.responseText);
-                },
-                error: function (response) {
-                    //alert(response.responseText);
-                }
-            });
+            var result = confirm("Cập nhật biên bản?");
+            if (result == true) {
+                $.ajax({
+                    type: "GET",
+                    url: "/NhanKhoaPhieu/CapNhatBienBan",
+                    data: { id: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        alert(response);
+                        //$('#dialog').show('open');
+                    },
+                    failure: function (response) {
+                        //alert(response.responseText);
+                    },
+                    error: function (response) {
+                        //alert(response.responseText);
+                    }
+                });
+            } 
+            
         };
         function getFormattedDate(date) {
             var day = date.getDate();
